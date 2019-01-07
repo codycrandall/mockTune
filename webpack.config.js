@@ -25,24 +25,21 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: [
+					"style-loader",
 					{
-						loaders:[ "style-loader", "css-loader" ],
+						loader: "css-loader",
 						options: {
-							sourceMap: true
+							importLoaders: 2 // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
 						}
 					},
-					{
-						loader: "sass-loader",
-						options: {
-							sourceMap: true
-						}
-					}
+					"postcss-loader",
+					"sass-loader"
 				]
 			}
 		]
 	},
 	resolve: {
-		extensions: [".jsx", ".ts", ".js"]
+		extensions: [".jsx", ".js"]
 	},
 	plugins: [HtmlWebpackPluginConfig]
 };

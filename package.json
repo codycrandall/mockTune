@@ -3,14 +3,15 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "build": "webpack --mode production",
+        "build": "webpack",
         "cypress": "cypress open",
         "eslint": "./node_modules/.bin/eslint ./src --fix",
-        "start": "webpack-dev-server --mode development --hot --open",
+        "start": "webpack-dev-server --mode development --hot",
         "test": "NODE_ENV=test ./node_modules/.bin/mocha --require babel-register ./test/helpers/enzyme-wrapper test/*.js --reporter spec||exit 0"
     },
     "dependencies": {
         "hapi": "^17.8.1",
+        "node-sass": "^4.11.0",
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
         "react-hot-loader": "^4.3.12"
@@ -32,7 +33,10 @@
         "eslint-plugin-react": "^7.12.2",
         "html-webpack-plugin": "^3.2.0",
         "mocha": "^5.2.0",
+        "postcss-import": "^12.0.1",
         "react-test-renderer": "^16.6.3",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.1",
         "webpack": "^4.26.1",
         "webpack-cli": "^3.1.2",
         "webpack-dev-server": "^3.1.10"

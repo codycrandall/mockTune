@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import "../sass/components/app.scss";
 
 class App extends Component {
 	render() {
-		return <span className = {"start-new-game"}>{"Start New Game"}</span>;
+		return <span className={"start-new-game"}>{"Start New Game"}</span>;
 	}
 }
 
