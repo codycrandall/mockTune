@@ -26,10 +26,7 @@ module.exports = {
 				test: /\.scss$/,
 				use: [
 					{
-						loader: "style-loader"
-					},
-					{
-						loader: "css-loader",
+						loaders:[ "style-loader", "css-loader" ],
 						options: {
 							sourceMap: true
 						}
