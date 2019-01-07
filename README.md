@@ -1,7 +1,3 @@
-mockTune
-
-====
-
 ## Getting Started
 
 1. `npm i` install dependencies.
