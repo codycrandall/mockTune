@@ -1,14 +1,8 @@
-import React, { Component } from "react";
-import "../sass/components/app.scss";
-let counter = 1;
+import React, { Component } from 'react';
+import '../sass/components/app.scss';
 class App extends Component {
 	render() {
-		return <span className={"start-new-game"} onClick={addToCounter()}>{counter}</span>;
+		return <span className={'start-new-game'} onClick={() => {}} />;
 	}
-
 }
-function addToCounter() {
-	counter++;
-}
-
 export default App;
