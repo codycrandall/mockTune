@@ -8,6 +8,7 @@
     "ecmaFeatures": {
         "jsx": true
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module"
     },
@@ -31,7 +32,7 @@
         "react/jsx-boolean-value": 2,
         "react/jsx-curly-spacing": 2,
         "react/jsx-indent-props": [2, "tab"],
-        "react/jsx-no-bind": 2,
+        "react/jsx-no-bind": 0,
         "react/jsx-no-duplicate-props": 2,
         "react/jsx-no-undef": 0,
         "react/jsx-uses-react": 2,
@@ -43,9 +44,9 @@
         "react/no-multi-comp": 2,
         "react/no-unknown-property": 2,
         "react/react-in-jsx-scope": 2,
-        "react/require-extension": [2, { "extensions": [".js", ".jsx"] }],
+        "react/require-extension": [0, { "extensions": [".js", ".jsx"] }],
         "react/self-closing-comp": 2,
-        "react/wrap-multilines": 2,
+        "react/wrap-multilines": 0,
         "strict": [2, "global"]
     }
 }
