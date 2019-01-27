@@ -1,6 +1,6 @@
 coverage
-dist/
+dist
 .env
 logs
-node_modules/
+node_modules
 .npm
