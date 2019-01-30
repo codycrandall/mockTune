@@ -1,17 +1,17 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-	template: "./src/index.html",
-	filename: "index.html",
-	inject: "body"
+	template: './src/ui-core/index.html',
+	filename: 'index.html',
+	inject: 'body'
 });
 
 module.exports = {
-	entry: "./src/index.js",
-	mode: "development",
+	entry: './src/ui-core/index.js',
+	mode: 'development',
 	output: {
-		path: path.join(__dirname, "dist/"),
-		filename: "bundle.js"
+		path: path.join(__dirname, 'dist/'),
+		filename: 'bundle.js'
 	},
 	module: {
 		rules: [
@@ -19,27 +19,27 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
-					loader: "babel-loader"
+					loader: 'babel-loader'
 				}
 			},
 			{
 				test: /\.scss$/,
 				use: [
-					"style-loader",
+					'style-loader',
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 						options: {
 							importLoaders: 2 // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
 						}
 					},
-					"postcss-loader",
-					"sass-loader"
+					'postcss-loader',
+					'sass-loader'
 				]
 			}
 		]
 	},
 	resolve: {
-		extensions: [".jsx", ".js"]
+		extensions: ['.jsx', '.js']
 	},
 	plugins: [HtmlWebpackPluginConfig]
 };
