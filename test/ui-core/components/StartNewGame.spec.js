@@ -5,8 +5,8 @@ import { mount } from 'enzyme';
 import StartNewGame from '../../../src/ui-core/components/StartNewGame';
 
 describe('<StartNewGame />', () => {
-	it.only('should render ', () => {
+	it('should render the button text', () => {
 		const startNewGame = mount(<StartNewGame />);
-		expect(startNewGame.contains(<div className="start-new-game" />)).eql(true);
+		expect(startNewGame.text()).eql('Start New Game');
 	});
 });
