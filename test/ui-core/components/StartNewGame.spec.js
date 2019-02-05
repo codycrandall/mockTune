@@ -9,4 +9,9 @@ describe('<StartNewGame />', () => {
 		const startNewGame = mount(<StartNewGame />);
 		expect(startNewGame.text()).eql('Start New Game');
 	});
+
+	it.only('should render a font awesome closed icon', () => {
+		const fontAwesome = mount(<StartNewGame />).find('.fa-chevron-down');
+		expect(fontAwesome.length).eql(1);
+	})
 });
