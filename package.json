@@ -10,6 +10,9 @@
         "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive --require jsdom-config.js --require babel-register --require ignore-styles ./test/helpers/enzyme-wrapper test --reporter spec||exit 0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.14",
+        "@fortawesome/free-solid-svg-icons": "^5.7.1",
+        "@fortawesome/react-fontawesome": "^0.1.4",
         "acorn": "^6.0.5",
         "css-loader": "^2.1.0",
         "hapi": "^17.8.1",
