@@ -5,7 +5,11 @@ import StartNewGame from './components/StartNewGame';
 
 class App extends Component {
 	render() {
-		return <StartNewGame />;
+		return (
+			<div className={'wrapper'}>
+				<StartNewGame />
+			</div>
+		);
 	}
 }
 export default App;
