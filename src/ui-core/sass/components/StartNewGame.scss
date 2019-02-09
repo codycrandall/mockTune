@@ -5,7 +5,14 @@
 	font-family: 'Courier New', Courier, monospace;
 	border: 1px solid green;
 	
+	
 	.chevron {
 		padding-left: 5px;
 	}
 }
+
+::selection {
+	color:green;
+	}
+
+
