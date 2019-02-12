@@ -9,17 +9,19 @@ export default function StartNewGame() {
 	const [isMenuExpanded, setMenuExpanded] = useState(false);
 
 	return (
-		<div
-			className={'start-new-game'}
-			onClick={() => setMenuExpanded(!isMenuExpanded)}
-		>
-			Start New Game
-			<FontAwesomeIcon
-				icon={isMenuExpanded ? faChevronUp : faChevronDown}
-				size={'xs'}
-				className={`chevron`}
-			/>
-			<TextInput />
+		<div className={'start-new-game'}>
+			<div
+				className={'start-new-text'}
+				onClick={() => setMenuExpanded(!isMenuExpanded)}
+			>
+				Start New Game
+				<FontAwesomeIcon
+					icon={isMenuExpanded ? faChevronUp : faChevronDown}
+					size={'xs'}
+					className={`chevron`}
+				/>
+			</div>
+			{isMenuExpanded && <TextInput placeholder={'Player Name'} />}
 		</div>
 	);
 }

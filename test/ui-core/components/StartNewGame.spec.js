@@ -26,18 +26,23 @@ describe('<StartNewGame />', () => {
 	});
 
 	it('should display an open chevron after being clicked', () => {
-		startNewGame.find('.start-new-game').prop('onClick')();
-
-		startNewGame.update();
+		clickStartNewGame();
 
 		assertFontAwesomeIcon(faChevronUp);
 	});
 	describe('name input', () => {
-		it('should display after being clicked', () => {
-			startNewGame.find('.start-new-game').prop('onClick')();
-			startNewGame.update();
+		it('should not display before start new game is clicked', () => {
+			expect(startNewGame.find(TextInput)).lengthOf(0);
 
-			expect(startNewGame.find(TextInput).type()).eql(TextInput);
+		});
+
+		it('should display with a placeholder after start new game is clicked', () => {
+			clickStartNewGame();
+			
+			const textInput = startNewGame.find(TextInput);
+
+			expect(textInput.type()).eql(TextInput)
+			expect(textInput.prop('placeholder')).eql('Player Name');
 		});
 	});
 
@@ -46,4 +51,9 @@ describe('<StartNewGame />', () => {
 
 		expect(fontAwesome.prop('icon')).eql(icon);
 	}
+
+	function clickStartNewGame() {
+		startNewGame.find('.start-new-text').prop('onClick')();
+		startNewGame.update();
+	};
 });
