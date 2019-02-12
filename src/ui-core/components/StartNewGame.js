@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import '../sass/components/StartNewGame.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import TextInput from './TextInput';
 
 export default function StartNewGame() {
 	const [isMenuExpanded, setMenuExpanded] = useState(false);
