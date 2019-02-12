@@ -10,10 +10,12 @@ describe.only('<TextInput />', () => {
 		const chance = new Chance; 
 		
 		const props = {
+			value: chance.paragraph(),
 			placeholder : chance.paragraph()
 		}
 		const textInput = mount(<TextInput {...props} />).childAt(0);
 
 		expect(textInput.prop('placeholder')).eql(props.placeholder);
+		expect(textInput.prop('value')).eql(props.value);
 	})
 });

@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 export default function TextInput(props) {
 	
 	TextInput.propTypes = {
-		placeholder: PropTypes.string
+		placeholder: PropTypes.string,
+		value: PropTypes.string
 	}
-	const {placeholder} = props;
+	const {placeholder, value} = props;
 
-	return <input type={'text'} placeholder={placeholder} />;
+	return <input type={'text'} placeholder={placeholder} value={value}/>;
 }
