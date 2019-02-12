@@ -5,17 +5,29 @@ import Chance from 'chance';
 
 import TextInput from '../../../src/ui-core/components/TextInput'
 
-describe.only('<TextInput />', () => {
-	it('should render with a placeholder', () => {
-		const chance = new Chance; 
-		
-		const props = {
-			value: chance.paragraph(),
-			placeholder : chance.paragraph()
+describe('<TextInput />', () => {
+	let props, textInput;
+	const chance = new Chance; 
+	
+	beforeEach(() => {
+		props = {
+			placeholder : chance.word()
 		}
-		const textInput = mount(<TextInput {...props} />).childAt(0);
+		textInput = mount(<TextInput {...props} />);
+	});
+	it('should render with a placeholder', () => {
+		const input = textInput.childAt(0);
+		expect(input.prop('placeholder')).eql(props.placeholder);
+	})
 
-		expect(textInput.prop('placeholder')).eql(props.placeholder);
-		expect(textInput.prop('value')).eql(props.value);
+	it('should add input values to the state', () => {
+		const expectedValue = chance.word();
+		const event = { target: { value: expectedValue } };
+		
+		textInput.simulate('change', event);
+		
+		const inputValue = textInput.childAt( 0 ).prop( 'value' );
+
+		expect(inputValue).eql(expectedValue);
 	})
 });

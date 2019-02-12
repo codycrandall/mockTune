@@ -19,6 +19,7 @@ export default function StartNewGame() {
 				size={'xs'}
 				className={`chevron`}
 			/>
+			<TextInput />
 		</div>
 	);
 }
