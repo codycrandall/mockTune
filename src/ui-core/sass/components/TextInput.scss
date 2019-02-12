@@ -1,0 +1,10 @@
+input {
+	margin: 25px;
+	background-color: transparent;
+	border: 1px solid green;
+	color: green;
+}
+
+::placeholder {
+	color: green;
+}
