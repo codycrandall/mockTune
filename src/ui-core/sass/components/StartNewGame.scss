@@ -1,4 +1,5 @@
-.start-new-game {	
+.start-new-game-menu {	
+	text-align: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -6,10 +7,9 @@
 	background-color: #1C1C1C;
 	padding: 10px;
 	color: green;
-	font-family: 'Courier New', Courier, monospace;
 	border: 1px solid green;
 	
-	.start-new-text {
+	.start-new-game {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -22,6 +22,6 @@
 
 ::selection {
 	color:green;
-	}
+}
 
 

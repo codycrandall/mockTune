@@ -8,13 +8,17 @@ import TextInput from './TextInput';
 export default function StartNewGame() {
 	const [isMenuExpanded, setMenuExpanded] = useState(false);
 
+	function renderStartNewGameText() {
+		return <div className={`start-new-text-${isMenuExpanded}`}>Start New Game</div>;
+	}
+
 	return (
-		<div className={'start-new-game'}>
+		<div className={'start-new-game-menu'}>
 			<div
-				className={'start-new-text'}
+				className={'start-new-game'}
 				onClick={() => setMenuExpanded(!isMenuExpanded)}
 			>
-				Start New Game
+				{!isMenuExpanded && renderStartNewGameText()}
 				<FontAwesomeIcon
 					icon={isMenuExpanded ? faChevronUp : faChevronDown}
 					size={'xs'}
@@ -22,6 +26,7 @@ export default function StartNewGame() {
 				/>
 			</div>
 			{isMenuExpanded && <TextInput placeholder={'Player Name'} />}
+			{isMenuExpanded && renderStartNewGameText()}
 		</div>
 	);
 }

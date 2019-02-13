@@ -17,7 +17,7 @@ describe('<StartNewGame />', () => {
 		startNewGame.unmount();
 	});
 
-	it('should render the button text', () => {
+	it('should render the button with text', () => {
 		expect(startNewGame.text()).eql('Start New Game');
 	});
 
@@ -53,7 +53,7 @@ describe('<StartNewGame />', () => {
 	}
 
 	function clickStartNewGame() {
-		startNewGame.find('.start-new-text').prop('onClick')();
+		startNewGame.find('.start-new-game').prop('onClick')();
 		startNewGame.update();
 	};
 });
