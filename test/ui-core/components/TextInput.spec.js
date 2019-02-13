@@ -15,6 +15,11 @@ describe('<TextInput />', () => {
 		}
 		textInput = mount(<TextInput {...props} />);
 	});
+
+	afterEach(() => {
+		textInput.unmount();
+	});
+
 	it('should render with a placeholder', () => {
 		const input = textInput.childAt(0);
 		expect(input.prop('placeholder')).eql(props.placeholder);

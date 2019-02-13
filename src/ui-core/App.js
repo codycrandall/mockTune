@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import './sass/App.scss';
-import StartNewGame from './components/StartNewGame';
+import MenuWrapper from './components/start-new-game/MenuWrapper';
 
 class App extends Component {
 	render() {
 		return (
 			<div className={'wrapper'}>
-				<StartNewGame />
+				<MenuWrapper />
 			</div>
 		);
 	}
