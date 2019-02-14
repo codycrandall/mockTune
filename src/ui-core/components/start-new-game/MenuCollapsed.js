@@ -6,6 +6,7 @@ export default function MenuCollapsed(props) {
 	MenuCollapsed.propTypes = {
 		setMenuExpanded: PropTypes.func
 	};
+
 	return (
 		<div onClick={() => props.setMenuExpanded(true)}>
 			Start New Game
