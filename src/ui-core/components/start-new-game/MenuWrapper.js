@@ -9,7 +9,6 @@ export default function MenuWrapper() {
 
 	return (
 		<div className={'start-new-game'}>
-
 			{!isMenuExpanded && <MenuCollapsed setMenuExpanded={setMenuExpanded} />}
 			{isMenuExpanded && <MenuExpanded setMenuExpanded={setMenuExpanded} />}
 		</div>

@@ -22,7 +22,7 @@ describe('<MenuExpanded />', () => {
 		assertFontAwesomeIcon(newGameMenu, faChevronUp);
 	});
 
-	it('should display a text input with the text "Player Name"', () => {
+	it('should render a text input with the text "Player Name"', () => {
 		const textInput = newGameMenu.find(TextInput);
 
 		expect(textInput.prop('placeholder')).eql('Player Name');
