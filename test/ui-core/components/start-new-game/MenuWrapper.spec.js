@@ -32,6 +32,12 @@ describe('<MenuWrapper />', () => {
 		assertMenuIsClosed();
 	});
 
+	it('should not close MenuExpanded when TextInput is clicked', () => {
+		menuWrapper.find(MenuCollapsed).simulate('click');
+		menuWrapper.find(TextInput).simulate('click');
+
+		assertMenuIsOpen();
+	});
 
 	function assertMenuIsOpen() {
 		expect(menuWrapper.find(MenuExpanded)).lengthOf(1);
