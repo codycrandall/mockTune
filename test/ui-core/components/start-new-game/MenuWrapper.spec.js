@@ -5,6 +5,7 @@ import {expect} from 'chai';
 import MenuWrapper from '../../../../src/ui-core/components/start-new-game/MenuWrapper';
 import MenuCollapsed from '../../../../src/ui-core/components/start-new-game/MenuCollapsed';
 import MenuExpanded from '../../../../src/ui-core/components/start-new-game/MenuExpanded';
+import TextInput from '../../../../src/ui-core/components/TextInput';
 
 describe('<MenuWrapper />', () => {
 	let menuWrapper;
@@ -18,21 +19,27 @@ describe('<MenuWrapper />', () => {
 	});
 
 	it('should initially render MenuCollapsed', () => {
-		expect(menuWrapper.find(MenuCollapsed)).lengthOf(1);
-		expect(menuWrapper.find(MenuExpanded)).lengthOf(0);
+		assertMenuIsClosed();
 	});
 
 	it('should render switch isMenuExpanded when clicked', () => {	
 		menuWrapper.find(MenuCollapsed).simulate('click');
-
-		expect(menuWrapper.find(MenuExpanded)).lengthOf(1);
-		expect(menuWrapper.find(MenuCollapsed)).lengthOf(0);
+		
+		assertMenuIsOpen();
 		
 		menuWrapper.find(MenuExpanded).simulate('click');
-		
-		expect(menuWrapper.find(MenuExpanded)).lengthOf(0);
-		expect(menuWrapper.find(MenuCollapsed)).lengthOf(1);
+
+		assertMenuIsClosed();
 	});
 
 
+	function assertMenuIsOpen() {
+		expect(menuWrapper.find(MenuExpanded)).lengthOf(1);
+		expect(menuWrapper.find(MenuCollapsed)).lengthOf(0);
+	}
+
+	function assertMenuIsClosed() {
+		expect(menuWrapper.find(MenuExpanded)).lengthOf(0);
+		expect(menuWrapper.find(MenuCollapsed)).lengthOf(1);
+	}
 });
