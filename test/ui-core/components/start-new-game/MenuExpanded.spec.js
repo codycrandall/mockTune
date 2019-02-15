@@ -28,5 +28,9 @@ describe('<MenuExpanded />', () => {
 		expect(textInput.prop('placeholder')).eql('Player Name');
 	});
 
+	it('should render a "GO" button', () => {
+		const goButton = newGameMenu.find('button');
+		expect(goButton.text()).eql("GO"); 
+	});
 	
 });

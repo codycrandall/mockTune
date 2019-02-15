@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import '../../sass/components/MenuWrapper.scss';
+import '../../sass/components/start-new-game/MenuWrapper.scss';
 import MenuCollapsed from './MenuCollapsed';
 import MenuExpanded from './MenuExpanded';
 

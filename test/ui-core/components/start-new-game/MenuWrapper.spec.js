@@ -38,6 +38,14 @@ describe('<MenuWrapper />', () => {
 
 		assertMenuIsOpen();
 	});
+	describe('no name has been entered into the text input', () => {
+		it('should not close MenuExpanded when "GO" button is clicked', () => {
+			menuWrapper.find(MenuCollapsed).simulate('click');
+			menuWrapper.find('button').simulate('click');
+	
+			assertMenuIsOpen();
+		});
+	})
 
 	function assertMenuIsOpen() {
 		expect(menuWrapper.find(MenuExpanded)).lengthOf(1);
