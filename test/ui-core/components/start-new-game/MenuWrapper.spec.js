@@ -22,7 +22,7 @@ describe('<MenuWrapper />', () => {
 		assertMenuIsClosed();
 	});
 
-	it('should render switch isMenuExpanded when clicked', () => {	
+	it('should switch isMenuExpanded when clicked', () => {	
 		menuWrapper.find(MenuCollapsed).simulate('click');
 		
 		assertMenuIsOpen();

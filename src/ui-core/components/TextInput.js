@@ -5,10 +5,11 @@ import '../sass/components/TextInput.scss';
 export default function TextInput(props) {
 	const [inputValue, setInputValue] = useState('');
 
+	const{ placeholder } = props;
+
 	TextInput.propTypes = {
 		placeholder: PropTypes.string
 	};
-	const { placeholder } = props;
 
 	return (
 		<input

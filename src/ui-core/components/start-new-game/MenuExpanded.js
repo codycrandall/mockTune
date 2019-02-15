@@ -13,12 +13,13 @@ export default function MenuExpanded(props) {
 
 	return (
 		<div onClick={() => props.setMenuExpanded(false)}>
+			<TextInput placeholder={'Player Name'} />
 			<FontAwesomeIcon
 				icon={faChevronUp}
 				size={'xs'}
 				className={`chevron`}
 			/>
-			<TextInput placeholder={'Player Name'} />
+			
 		</div>
 	);
 }
