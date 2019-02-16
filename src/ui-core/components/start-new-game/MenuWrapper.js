@@ -8,7 +8,7 @@ export default function MenuWrapper() {
 	const [isMenuExpanded, setMenuExpanded] = useState(false);
 
 	return (
-		<div className={'start-new-game'}>
+		<div className={'start-new-game'} onClick={() => setMenuExpanded(!isMenuExpanded)}>
 			{!isMenuExpanded && <MenuCollapsed setMenuExpanded={setMenuExpanded} />}
 			{isMenuExpanded && <MenuExpanded setMenuExpanded={setMenuExpanded} />}
 		</div>
