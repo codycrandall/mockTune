@@ -5,7 +5,6 @@ import {expect} from 'chai';
 import MenuWrapper from '../../../../src/ui-core/components/start-new-game/MenuWrapper';
 import MenuCollapsed from '../../../../src/ui-core/components/start-new-game/MenuCollapsed';
 import MenuExpanded from '../../../../src/ui-core/components/start-new-game/MenuExpanded';
-import TextInput from '../../../../src/ui-core/components/TextInput';
 
 describe('<MenuWrapper />', () => {
 	let menuWrapper;
@@ -32,12 +31,6 @@ describe('<MenuWrapper />', () => {
 		assertMenuIsClosed();
 	});
 
-	it('should not close MenuExpanded when TextInput is clicked', () => {
-		menuWrapper.find(MenuCollapsed).simulate('click');
-		menuWrapper.find(TextInput).simulate('click');
-
-		assertMenuIsOpen();
-	});
 	describe('no name has been entered into the text input', () => {
 		it('should not close MenuExpanded when "GO" button is clicked', () => {
 			menuWrapper.find(MenuCollapsed).simulate('click');
