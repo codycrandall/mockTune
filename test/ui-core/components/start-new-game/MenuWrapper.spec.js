@@ -2,9 +2,9 @@ import React from 'react';
 import { mount } from 'enzyme';
 import {expect} from 'chai';
 
-import MenuWrapper from '../../../../src/ui-core/components/start-new-game/MenuWrapper';
-import MenuCollapsed from '../../../../src/ui-core/components/start-new-game/MenuCollapsed';
-import MenuExpanded from '../../../../src/ui-core/components/start-new-game/MenuExpanded';
+import MenuWrapper from 'Components/start-new-game/MenuWrapper';
+import MenuCollapsed from 'Components/start-new-game/MenuCollapsed';
+import MenuExpanded from 'Components/start-new-game/MenuExpanded';
 
 describe('<MenuWrapper />', () => {
 	let menuWrapper;

@@ -3,7 +3,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Chance from 'chance';
 
-import TextInput from '../../../src/ui-core/components/TextInput'
+import TextInput from 'Components/TextInput'
 
 describe('<TextInput />', () => {
 	let props, textInput;
