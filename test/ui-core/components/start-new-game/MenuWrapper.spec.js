@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import {expect} from 'chai';
+import { expect } from 'chai';
 
 import MenuWrapper from 'Components/start-new-game/MenuWrapper';
 import MenuCollapsed from 'Components/start-new-game/MenuCollapsed';
@@ -10,7 +10,7 @@ describe('<MenuWrapper />', () => {
 	let menuWrapper;
 
 	beforeEach(() => {
-		menuWrapper = mount(<MenuWrapper />);
+		menuWrapper = mount(<MenuWrapper/>);
 	});
 
 	afterEach(() => {
@@ -21,24 +21,15 @@ describe('<MenuWrapper />', () => {
 		assertMenuIsClosed();
 	});
 
-	it('should switch isMenuExpanded when clicked', () => {	
+	it('should switch isMenuExpanded when clicked', () => {
 		menuWrapper.find(MenuCollapsed).simulate('click');
-		
+
 		assertMenuIsOpen();
-		
+
 		menuWrapper.find(MenuExpanded).simulate('click');
 
 		assertMenuIsClosed();
 	});
-
-	describe('no name has been entered into the text input', () => {
-		it('should not close MenuExpanded when "GO" button is clicked', () => {
-			menuWrapper.find(MenuCollapsed).simulate('click');
-			menuWrapper.find('button').simulate('click');
-	
-			assertMenuIsOpen();
-		});
-	})
 
 	function assertMenuIsOpen() {
 		expect(menuWrapper.find(MenuExpanded)).lengthOf(1);

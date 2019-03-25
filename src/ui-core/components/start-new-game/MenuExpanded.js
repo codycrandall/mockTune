@@ -1,28 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
 import '../../sass/components/start-new-game/MenuExpanded.scss';
 import TextInput from '../TextInput';
 
-export default class MenuExpanded extends Component {
-	render() {
-		return (
-			<div>
-				<TextInput placeholder={'Player Name'} />
-				<FontAwesomeIcon
-					icon={faChevronUp}
-					size={'xs'}
-					className={`chevron`}
-				/>
-				<button
-					onClick={event => {
-						event.stopPropagation();
-					}}
-				>
-					GO
-				</button>
-			</div>
-		);
+export default function MenuExpanded(props) {
+	const [inputValue, setInputValue] = useState('');
+
+	MenuExpanded.propTypes = {
+		setNameContext: PropTypes.func
+	};
+
+	function handleClick(event) {
+		event.stopPropagation();
+		if (inputValue && inputValue.trim(' ') !== '') {
+			props.setNameContext(inputValue);
+		}
 	}
+
+	return (
+		<div>
+			<TextInput
+				placeholder={'Player Name'}
+				inputValue={inputValue}
+				setInputValue={setInputValue}
+			/>
+			<FontAwesomeIcon
+				icon={faChevronUp}
+				size={'xs'}
+				className={`chevron`}
+			/>
+			<button
+				onClick={event => {
+					handleClick(event);
+				}}
+			>
+				GO
+			</button>
+		</div>
+	);
 }

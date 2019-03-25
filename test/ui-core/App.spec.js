@@ -6,11 +6,10 @@ import App from '../../src/ui-core/App';
 import MenuWrapper from '../../src/ui-core/components/start-new-game/MenuWrapper';
 
 describe('<App/>', () => {
-	it('should contain a start new game button', () => {
+	it('should contain a menu wrapper', () => {
 		const wrapper = mount(<App />);
 
-		expect(wrapper.contains(<MenuWrapper />)).eql(true);
-		
+		expect(wrapper.find(MenuWrapper).prop('setNameContext')).to.be.a('function');
 		wrapper.unmount();
 	});
 });
