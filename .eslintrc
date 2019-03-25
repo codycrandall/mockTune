@@ -6,9 +6,6 @@
         "es6": true,
         "mocha":true
     },
-    "ecmaFeatures": {
-        "jsx": true
-    },
     "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module"
@@ -17,7 +14,7 @@
     "globals": {
         "$": false
     },
-    "plugins": ["react"],
+    "plugins": ["react", "react-hooks"],
     "rules": {
         "brace-style": [2, "1tbs"],
         "comma-style": 2,
@@ -29,6 +26,7 @@
         "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
         "no-multi-spaces": 0,
         "no-throw-literal": 2,
+        "no-undef":0,
         "no-underscore-dangle": 0,
         "react/jsx-boolean-value": 2,
         "react/jsx-curly-spacing": 2,
@@ -39,10 +37,11 @@
         "react/jsx-uses-react": 2,
         "react/jsx-uses-vars": 2,
         "react/no-danger": 2,
+        "react-hooks/rules-of-hooks": 2,
         "react/no-did-mount-set-state": 2,
         "react/no-did-update-set-state": 2,
         "react/no-direct-mutation-state": 2,
-        "react/no-multi-comp": 2,
+        "react/no-multi-comp": 0,
         "react/no-unknown-property": 2,
         "react/react-in-jsx-scope": 2,
         "react/require-extension": [0, { "extensions": [".js", ".jsx"] }],

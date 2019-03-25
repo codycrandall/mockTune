@@ -1,7 +1,10 @@
-import { expect } from 'chai';
+import chai, { expect } from 'chai';
 import React from 'react';
 import { mount } from 'enzyme';
 import Chance from 'chance';
+import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
+chai.use(sinonChai);
 
 import TextInput from 'Components/TextInput'
 
@@ -11,6 +14,7 @@ describe('<TextInput />', () => {
 	
 	beforeEach(() => {
 		props = {
+			setInputValue: sinon.stub(),
 			placeholder : chance.word()
 		}
 		textInput = mount(<TextInput {...props} />);
@@ -20,19 +24,24 @@ describe('<TextInput />', () => {
 		textInput.unmount();
 	});
 
-	it('should render with a placeholder', () => {
+	it('should render with props', () => {
 		const input = textInput.childAt(0);
 		expect(input.prop('placeholder')).eql(props.placeholder);
-	})
+		expect(input.prop('type')).eql('text');
+	});
 
-	it('should add input values to the state', () => {
-		const expectedValue = chance.word();
-		const event = { target: { value: expectedValue } };
-		
+	it('should not collapse after clicking on the input field', () => {
+		textInput.simulate('click');
+		expect(textInput).lengthOf(1);
+	});
+
+	it('should call setInputValue with text input', () => {
+		const expectedText = chance.word();
+		const event = { target: { value: expectedText } };
+
 		textInput.simulate('change', event);
-		
-		const inputValue = textInput.childAt( 0 ).prop( 'value' );
 
-		expect(inputValue).eql(expectedValue);
+		expect(props.setInputValue).calledOnce;
+		expect(props.setInputValue).calledWith(expectedText);
 	})
 });

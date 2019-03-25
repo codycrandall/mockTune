@@ -16,11 +16,11 @@ describe('<MenuCollapsed />', () => {
 		menuCollapsed.unmount();
 	});
 
-	it('should render the button with text', () => {
-		expect(menuCollapsed.text()).eql('Start New Game');
+	it('should include a down chevron', () => {
+		assertFontAwesomeIcon(menuCollapsed, faChevronDown);
 	});
 
-	it('should render a closed chevron', () => {
-		assertFontAwesomeIcon(menuCollapsed, faChevronDown);
+	it('should render the button with text', () => {
+		expect(menuCollapsed.text()).eql('Start New Game');
 	});
 });
