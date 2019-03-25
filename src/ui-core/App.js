@@ -2,7 +2,7 @@ import React, {useState	} from 'react';
 
 import './sass/App.scss';
 import './sass/style-baseline.scss';
-import MenuWrapper from './components/start-new-game/MenuWrapper';
+import CreateCharacterMenu from './components/start-new-game/CreateCharacterMenu';
 import {PlayerStore} from '../../src/ui-core/stores/player';
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
 		<React.StrictMode>
 			<PlayerStore.Provider value={nameContext}>
 				<div className={'wrapper'}>
-					<MenuWrapper
+					< CreateCharacterMenu
 						setNameContext={setNameContext}
 					/>
 				</div>

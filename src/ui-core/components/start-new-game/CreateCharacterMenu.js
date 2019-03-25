@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import '../../sass/components/start-new-game/MenuWrapper.scss';
+import '../../sass/components/start-new-game/CreateCharacterMenu.scss';
 import MenuCollapsed from './MenuCollapsed';
 import MenuExpanded from './MenuExpanded';
 
-export default function MenuWrapper(props) {
+export default function CreateCharacterMenu(props) {
 	const [isMenuExpanded, setMenuExpanded] = useState(false);
 
-	MenuWrapper.propTypes = {
+	CreateCharacterMenu.propTypes = {
 		setNameContext: PropTypes.func,
 	};
 

@@ -1,1 +1,3 @@
 --reporter dot
+--require ./test/test-setup
+--require ./test/chai-config

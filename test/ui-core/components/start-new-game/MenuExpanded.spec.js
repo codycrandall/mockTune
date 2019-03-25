@@ -1,18 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import Chance from 'chance';
-import chai, { expect } from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-chai.use(sinonChai);
 
 import MenuExpanded from 'Components/start-new-game/MenuExpanded';
 import TextInput from 'Components/TextInput';
 import { assertFontAwesomeIcon } from '../../../utilities/test-utilities';
 
 describe('<MenuExpanded />', () => {
-	let menuExpanded, textInput, chance, event, props;
+	let menuExpanded, textInput, event, props;
 
 	beforeEach(() => {
 		event = { stopPropagation: sinon.stub() };
@@ -21,7 +16,6 @@ describe('<MenuExpanded />', () => {
 		};
 		menuExpanded = mount(<MenuExpanded {...props} />);
 		textInput = menuExpanded.find(TextInput);
-		chance = new Chance();
 	});
 
 	afterEach(() => {

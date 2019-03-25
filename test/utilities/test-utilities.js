@@ -7,7 +7,13 @@ function assertFontAwesomeIcon(wrapper, icon) {
 	expect(fontAwesome.prop('icon')).eql(icon);
 }
 
+function enterPlayerName(input, inputValue) {
+	const event = { target: { value: inputValue } };
+
+	input.simulate('change', event);
+}
 
 module.exports = {
+	enterPlayerName,
 	assertFontAwesomeIcon
-}
+};

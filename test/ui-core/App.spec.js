@@ -3,13 +3,29 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import App from '../../src/ui-core/App';
-import MenuWrapper from '../../src/ui-core/components/start-new-game/MenuWrapper';
+import CreateCharacterMenu from 'Components/start-new-game/CreateCharacterMenu';
+import ChooseCar from 'Components/ChooseCar'
 
 describe('<App/>', () => {
-	it('should contain a menu wrapper', () => {
-		const wrapper = mount(<App />);
+	let wrapper;
 
-		expect(wrapper.find(MenuWrapper).prop('setNameContext')).to.be.a('function');
+	beforeEach(() => {
+		wrapper = mount(<App />);
+	});
+
+	afterEach(() => {
 		wrapper.unmount();
+	});
+
+	it('should initially render a create character menu', () => {
+		expect(
+			wrapper.find(CreateCharacterMenu).prop('setNameContext')
+		).to.be.a('function');
+
+		expect(wrapper.find(ChooseCar)).lengthOf(0);		
+	});
+
+	it('should render a choose car menu if name exists', () => {
+		
 	});
 });
