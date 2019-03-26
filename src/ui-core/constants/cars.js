@@ -7,7 +7,8 @@ const cars = [
 		horsepower: 106,
 		'curb-weight': 2450,
 		price: 900,
-		reliablility: 0.8
+		vin:1, 
+		reliability:  0.8
 	},
 	{
 		make: 'Mazda',
@@ -17,6 +18,7 @@ const cars = [
 		horsepower: 255,
 		'curb-weight': 2954,
 		price: 2500,
+		vin:2, 
 		reliability: 0.4
 	},
 	{
@@ -27,6 +29,7 @@ const cars = [
 		horsepower: 225,
 		'curb-weight': 3038,
 		price: 1899,
+		vin:3, 
 		reliability: 0.6
 	},
 	{
@@ -37,6 +40,7 @@ const cars = [
 		horsepower: 155,
 		'curb-weight': 2800,
 		price: 1300,
+		vin:4, 
 		reliability: 0.6
 	}
 ];

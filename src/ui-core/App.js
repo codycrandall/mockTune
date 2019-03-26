@@ -12,17 +12,11 @@ export default function App() {
 
 	return (
 		<React.StrictMode>
-			{!car && (
-				<div className={'wrapper'}>
-					{!name && (
-						<CreateCharacterMenu setName={setName} />
-					)}
-					{name && (
-						<ChooseCarMenu setCar={setCar} />
-					)}
-				</div>
-			)}
-			{car && <RaceMenu playerCar={car} playerName={name}/>}
+			<div className={'wrapper'}>
+				{!car && !name && <CreateCharacterMenu setName={setName} />}
+				{!car && name && <ChooseCarMenu setCar={setCar} />}
+				{car && <RaceMenu playerCar={car} playerName={name} />}
+			</div>
 		</React.StrictMode>
 	);
 }

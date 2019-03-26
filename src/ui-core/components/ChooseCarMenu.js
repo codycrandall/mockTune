@@ -12,7 +12,7 @@ export default function ChooseCarMenu(props) {
 	return (
 		<div>
 			{cars.map((car, key) => (
-				<Car car={car} key={key} setCar={props.setCar}/>
+				<Car car={car} key={key} setCar={props.setCar} />
 			))}
 		</div>
 	);

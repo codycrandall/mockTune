@@ -12,6 +12,6 @@ chance.mixin({
 		horsepower: chance.floating({ min: 1 }),
 		'curb-weight': chance.floating({ min: 1 }),
 		price: chance.dollar(),
-		reliablility: chance.normal()
+		vin:0, reliability:  chance.normal()
 	})
 });

@@ -1,15 +1,40 @@
 import React from 'React';
-import RaceMenu from 'Components/RaceMenu';
 import { mount } from 'enzyme';
 
-describe('RaceMenu', () => {
-	it('should render with a car', () => {
-		const playerName = chance.name();
-		const expectedCar = chance.car();
-		const raceMenu = mount(
-			<RaceMenu playerCar={expectedCar} playerName={playerName} />
-		);
+import RaceMenu from 'Components/RaceMenu'
+import newOpponent from '../../../src/ui-core/utilities/opponent-creator';
 
-		expect(raceMenu.text()).eql(`${playerName}- ${expectedCar.model}`);
+describe('RaceMenu', () => {
+	let raceMenu,
+		props,
+		expectedPlayerCar,
+		expectedOpponentCar,
+		expectedPlayerName,
+		expectedOpponentName;
+
+	beforeEach(() => {
+		expectedPlayerCar = chance.car();
+		expectedPlayerName = chance.name();
+		expectedOpponentCar = newOpponent.car;
+		expectedOpponentName = newOpponent.name;
+
+		props = {
+			playerCar: expectedPlayerCar,
+			playerName: expectedPlayerName
+		};
+
+		raceMenu = mount(<RaceMenu {...props} />);
+	});
+
+	it('should render with a car belonging to a player', () => {
+		expect(raceMenu.find('.player').text()).eql(
+			`${expectedPlayerName}- ${expectedPlayerCar.model}`
+		);
+	});
+
+	it('should render a car belonging to an opponent', () => {
+		expect(raceMenu.find('.opponent').text()).eql(
+			`${expectedOpponentName}- ${expectedOpponentCar.model}`
+		);
 	});
 });

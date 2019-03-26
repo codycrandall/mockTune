@@ -12,35 +12,29 @@ describe('Car', () => {
 	});
 
 	it('should render with props', () => {
-
 		expect(
-			car
-				.find('.car')
-				.childAt(0)
-				.text()
-		).eql(`${expectedCar.year} ${expectedCar.make} ${expectedCar.model} ${expectedCar.trim}`);
+			carAtIndex(0)
+		).eql(
+			`${expectedCar.year} ${expectedCar.make} ${expectedCar.model} ${
+				expectedCar.trim
+			}`
+		);
+		expect(carAtIndex(1)).eql(`horsepower: ${expectedCar.horsepower}`);
 		expect(
-			car
-				.find('.car')
-				.childAt(1)
-				.text()
-		).eql(`horsepower: ${expectedCar.horsepower}`);
-		expect(
-			car
-				.find('.car')
-				.childAt(2)
-				.text()
+			carAtIndex(2)
 		).eql(`curb weight: ${expectedCar['curb-weight']}`);
-		expect(
-			car
-				.find('.car')
-				.childAt(3)
-				.text()
-		).eql(`cost: ${expectedCar.price}`);
+		expect(carAtIndex(3)).eql(`cost: ${expectedCar.price}`);
 	});
 
 	it('should call setCar when a car is clicked', () => {
 		car.simulate('click');
 		expect(setCar).calledWith(expectedCar);
-	});
+	}); 
+
+	const carAtIndex = (index) => {
+		return car
+			.find('.car')
+			.childAt(index)
+			.text();
+	}
 });
