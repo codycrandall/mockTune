@@ -5,10 +5,9 @@ import ChooseCarMenu from 'Components/ChooseCarMenu';
 import Cars from '../../../src/ui-core/constants/cars';
 
 describe('<ChooseCarMenu/>', () => {
-	let cars, chooseCarMenu;
+	let cars, chooseCarMenu
 
 	
-
 	beforeEach(() => {
 		chooseCarMenu = mount(<ChooseCarMenu/>);
 		cars = chooseCarMenu.find('div').children();

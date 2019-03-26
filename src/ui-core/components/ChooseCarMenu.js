@@ -1,13 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cars from '../constants/cars';
 import '../sass/components/ChooseCarMenu.scss';
-import CarList from './CarList';
+import Car from './Car';
 
-export default function ChooseCarMenu() {
+export default function ChooseCarMenu(props) {
+	ChooseCarMenu.propTypes = {
+		setCarContext: PropTypes.func
+	};
+
 	return (
 		<div>
 			{cars.map((car, key) => (
-				<CarList car={car} key={key}/>
+				<Car car={car} key={key} setCarContext={props.setCarContext}/>
 			))}
 		</div>
 	);

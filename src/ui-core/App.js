@@ -9,6 +9,8 @@ import ChooseCarMenu from './components/ChooseCarMenu';
 export default function App() {
 
 	const [nameContext, setNameContext] = useState('');
+	const [carContext, setCarContext] = useState('');
+
 
 	return (
 		<React.StrictMode>
@@ -17,7 +19,7 @@ export default function App() {
 					{!nameContext && < CreateCharacterMenu
 						setNameContext={setNameContext}
 					/>}
-					{nameContext && <ChooseCarMenu/>}
+					{nameContext && <ChooseCarMenu setCarContext={setCarContext}/>}
 				</div>
 			</PlayerStore.Provider>
 		</React.StrictMode>
