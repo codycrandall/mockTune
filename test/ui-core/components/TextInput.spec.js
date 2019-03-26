@@ -15,7 +15,7 @@ describe('<TextInput />', () => {
 		textInput = mount(<TextInput {...props} />);
 	});
 
-	afterEach(() => {
+	after(() => {
 		textInput.unmount();
 	});
 

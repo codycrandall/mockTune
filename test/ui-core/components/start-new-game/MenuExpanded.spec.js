@@ -5,6 +5,7 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import MenuExpanded from 'Components/start-new-game/MenuExpanded';
 import TextInput from 'Components/TextInput';
 import { assertFontAwesomeIcon } from '../../../utilities/test-utilities';
+import {enterPlayerName} from '../../../utilities/test-utilities';
 
 describe('<MenuExpanded />', () => {
 	let menuExpanded, textInput, event, props;
@@ -18,7 +19,7 @@ describe('<MenuExpanded />', () => {
 		textInput = menuExpanded.find(TextInput);
 	});
 
-	afterEach(() => {
+	after(() => {
 		menuExpanded.unmount();
 	});
 
@@ -44,9 +45,8 @@ describe('<MenuExpanded />', () => {
 
 			it('should call setNameContext if the name is not blank', () => {
 				const expectedText = chance.word();
-				const textEvent = { target: { value: expectedText } };
-
-				textInput.simulate('change', textEvent);
+				
+				enterPlayerName(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
 				expect(props.setNameContext).calledOnce;
@@ -55,9 +55,8 @@ describe('<MenuExpanded />', () => {
 
 			it('should not call setNameContext if the name is blank', () => {
 				const expectedText = '    ';
-				const textEvent = { target: { value: expectedText } };
-
-				textInput.simulate('change', textEvent);
+				
+				enterPlayerName(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
 				expect(props.setNameContext).not.called;

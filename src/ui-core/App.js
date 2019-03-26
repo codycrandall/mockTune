@@ -4,6 +4,7 @@ import './sass/App.scss';
 import './sass/style-baseline.scss';
 import CreateCharacterMenu from './components/start-new-game/CreateCharacterMenu';
 import {PlayerStore} from '../../src/ui-core/stores/player';
+import ChooseCarMenu from './components/ChooseCarMenu';
 
 export default function App() {
 
@@ -13,9 +14,10 @@ export default function App() {
 		<React.StrictMode>
 			<PlayerStore.Provider value={nameContext}>
 				<div className={'wrapper'}>
-					< CreateCharacterMenu
+					{!nameContext && < CreateCharacterMenu
 						setNameContext={setNameContext}
-					/>
+					/>}
+					{nameContext && <ChooseCarMenu/>}
 				</div>
 			</PlayerStore.Provider>
 		</React.StrictMode>

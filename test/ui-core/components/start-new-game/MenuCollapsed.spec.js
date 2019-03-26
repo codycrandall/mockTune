@@ -12,7 +12,7 @@ describe('<MenuCollapsed />', () => {
 		menuCollapsed = mount(<MenuCollapsed />);
 	});
 
-	afterEach(() => {
+	after(() => {
 		menuCollapsed.unmount();
 	});
 

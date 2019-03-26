@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function assertFontAwesomeIcon(wrapper, icon) {

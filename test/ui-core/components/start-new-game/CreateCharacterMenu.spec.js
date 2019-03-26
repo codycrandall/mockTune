@@ -12,7 +12,7 @@ describe('<CreateCharacterMenu />', () => {
 		createCharacterMenu = mount(<CreateCharacterMenu/>);
 	});
 
-	afterEach(() => {
+	after(() => {
 		createCharacterMenu.unmount();
 	});
 

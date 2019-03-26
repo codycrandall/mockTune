@@ -1,0 +1,12 @@
+.car {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: green;
+	border: 1px solid green;
+	padding: 10px;
+
+	.model-info {
+		padding: 15px 0;
+	}
+}
