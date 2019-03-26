@@ -6,13 +6,13 @@ import Car from './Car';
 
 export default function ChooseCarMenu(props) {
 	ChooseCarMenu.propTypes = {
-		setCarContext: PropTypes.func
+		setCar: PropTypes.func
 	};
 
 	return (
 		<div>
 			{cars.map((car, key) => (
-				<Car car={car} key={key} setCarContext={props.setCarContext}/>
+				<Car car={car} key={key} setCar={props.setCar}/>
 			))}
 		</div>
 	);

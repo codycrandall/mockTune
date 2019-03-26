@@ -6,6 +6,7 @@ import CreateCharacterMenu from 'Components/start-new-game/CreateCharacterMenu';
 import TextInput from 'Components/TextInput';
 import ChooseCarMenu from 'Components/ChooseCarMenu';
 import {enterPlayerName} from '../utilities/test-utilities';
+import RaceMenu from 'Components/RaceMenu';
 
 describe('<App/>', () => {
 	let wrapper;
@@ -20,7 +21,7 @@ describe('<App/>', () => {
 
 	it('should initially render a create character menu', () => {
 		expect(
-			wrapper.find(CreateCharacterMenu).prop('setNameContext')
+			wrapper.find(CreateCharacterMenu).prop('setName')
 		).to.be.a('function');
 
 		expect(wrapper.find(ChooseCarMenu)).lengthOf(0);		
@@ -38,5 +39,20 @@ describe('<App/>', () => {
 
 		expect(wrapper.find(CreateCharacterMenu)).lengthOf(0)
 		expect(wrapper.find(ChooseCarMenu)).lengthOf(1);
+	});
+
+	it('should render a race menu if a car is chosen', () => {
+		wrapper.find('.start-new-game').simulate('click');
+
+		const textInput = wrapper.find(TextInput);
+		
+		enterPlayerName(textInput, chance.name());
+
+		wrapper.find('button').simulate('click');
+
+		wrapper.find('.car').first().simulate('click');
+
+		expect(wrapper.find(RaceMenu)).lengthOf(1);
+		expect(wrapper.find(ChooseCarMenu)).lengthOf(0);
 	});
 });

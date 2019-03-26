@@ -3,12 +3,12 @@ import Car from 'Components/Car';
 import { mount } from 'enzyme';
 
 describe('Car', () => {
-	let car, setCarContext, expectedCar;
+	let car, setCar, expectedCar;
 
 	beforeEach(() => {
 		expectedCar = chance.car();
-		setCarContext = sinon.stub();
-		car = mount(<Car car={expectedCar} setCarContext={setCarContext} />);
+		setCar = sinon.stub();
+		car = mount(<Car car={expectedCar} setCar={setCar} />);
 	});
 
 	it('should render with props', () => {
@@ -41,6 +41,6 @@ describe('Car', () => {
 
 	it('should call setCar when a car is clicked', () => {
 		car.simulate('click');
-		expect(setCarContext).calledWith(expectedCar);
+		expect(setCar).calledWith(expectedCar);
 	});
 });

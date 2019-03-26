@@ -5,14 +5,14 @@ export default function Car(props) {
 	Car.propTypes = {
 		car: PropTypes.object,
 		key: PropTypes.number,
-		setCarContext: PropTypes.func
+		setCar: PropTypes.func
 	};
 
-	const { car, key, setCarContext} = props;
+	const { car, key, setCar} = props;
 
 
 	return (
-		<span key={key} className={'car'} onClick={() =>setCarContext(car)}>
+		<span key={key} className={'car'} onClick={() =>setCar(car)}>
 			<div className={'model-info'}>
 				{car.year} {car.make} {car.model} {car.trim}
 			</div>

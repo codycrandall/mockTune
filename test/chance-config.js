@@ -5,8 +5,8 @@ module.exports = chance;
 
 chance.mixin({
 	car: () => ({
-		make: chance.string(),
-		model: chance.string(),
+		make: chance.word(),
+		model: chance.word(),
 		year: chance.natural(),
 		trim: chance.string(),
 		horsepower: chance.floating({ min: 1 }),
