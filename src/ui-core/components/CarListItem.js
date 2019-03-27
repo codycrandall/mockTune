@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Car(props) {
-	Car.propTypes = {
+export default function CarListItem(props) {
+	CarListItem.propTypes = {
 		car: PropTypes.object,
-		key: PropTypes.number,
 		setCar: PropTypes.func
 	};
 
-	const { car, key, setCar} = props;
+	const { car, setCar} = props;
 
 
 	return (
-		<span key={key} className={'car'} onClick={() =>setCar(car)}>
+		<span className={'car'} onClick={() =>setCar(car)}>
 			<div className={'model-info'}>
 				{car.year} {car.make} {car.model} {car.trim}
 			</div>

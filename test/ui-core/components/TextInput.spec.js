@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import {enterPlayerName} from '../../utilities/test-utilities';
+import {enterText} from '../../utilities/test-utilities';
 import TextInput from 'Components/TextInput'
 
 describe('<TextInput />', () => {
@@ -32,7 +32,7 @@ describe('<TextInput />', () => {
 
 	it('should call setInputValue with text input', () => {
 		const expectedText = chance.word();
-		enterPlayerName(textInput, expectedText);
+		enterText(textInput, expectedText);
 		
 		expect(props.setInputValue).calledOnce;
 		expect(props.setInputValue).calledWith(expectedText);

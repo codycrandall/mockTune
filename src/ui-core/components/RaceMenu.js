@@ -7,7 +7,7 @@ import newOpponent from '../utilities/opponent-creator';
 
 export default function RaceMenu(props) {
 	RaceMenu.propTypes = {
-		playerCar: PropTypes.array,
+		playerCar: PropTypes.object,
 		playerName: PropTypes.string
 	};
 	const { playerCar, playerName } = props;
@@ -15,14 +15,15 @@ export default function RaceMenu(props) {
 	function renderUser() {
 		return <RaceCar className={'player'} name={playerName} car={playerCar} />;
 	}
-	function renderRaceCar() {
+	function renderOpponent() {
 		return <RaceCar className={'opponent'} name={newOpponent.name} car={newOpponent.car} />;
 	}
 
+
 	return (
-		<div>
-			{renderUser()}
-			{renderRaceCar()}
+		<div className={'race-menu'}>
+			<div> {renderUser()}</div>
+			<div>{renderOpponent()}</div>
 		</div>
 	);
 }

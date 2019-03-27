@@ -1,14 +1,14 @@
 import React from 'React';
-import Car from 'Components/Car';
+import CarListItem from 'Components/CarListItem';
 import { mount } from 'enzyme';
 
-describe('Car', () => {
+describe('CarListItem', () => {
 	let car, setCar, expectedCar;
 
 	beforeEach(() => {
 		expectedCar = chance.car();
 		setCar = sinon.stub();
-		car = mount(<Car car={expectedCar} setCar={setCar} />);
+		car = mount(<CarListItem car={expectedCar} setCar={setCar} />);
 	});
 
 	it('should render with props', () => {

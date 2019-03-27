@@ -5,7 +5,7 @@ import App from '../../src/ui-core/App';
 import CreateCharacterMenu from 'Components/start-new-game/CreateCharacterMenu';
 import TextInput from 'Components/TextInput';
 import ChooseCarMenu from 'Components/ChooseCarMenu';
-import {enterPlayerName} from '../utilities/test-utilities';
+import {enterText} from '../utilities/test-utilities';
 import RaceMenu from 'Components/RaceMenu';
 
 describe('<App/>', () => {
@@ -33,7 +33,7 @@ describe('<App/>', () => {
 
 		const textInput = wrapper.find(TextInput);
 		
-		enterPlayerName(textInput, chance.name());
+		enterText(textInput, chance.name());
 
 		wrapper.find('button').simulate('click');
 
@@ -46,7 +46,7 @@ describe('<App/>', () => {
 
 		const textInput = wrapper.find(TextInput);
 		
-		enterPlayerName(textInput, chance.name());
+		enterText(textInput, chance.name());
 
 		wrapper.find('button').simulate('click');
 

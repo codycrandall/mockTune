@@ -4,8 +4,8 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 import MenuExpanded from 'Components/start-new-game/MenuExpanded';
 import TextInput from 'Components/TextInput';
-import { assertFontAwesomeIcon } from '../../../utilities/test-utilities';
-import {enterPlayerName} from '../../../utilities/test-utilities';
+import { expectWrapperHasIcon } from '../../../utilities/test-utilities';
+import {enterText} from '../../../utilities/test-utilities';
 
 describe('<MenuExpanded />', () => {
 	let menuExpanded, textInput, event, props;
@@ -24,7 +24,7 @@ describe('<MenuExpanded />', () => {
 	});
 
 	it('should render an open chevron', () => {
-		assertFontAwesomeIcon(menuExpanded, faChevronUp);
+		expectWrapperHasIcon(menuExpanded, faChevronUp);
 	});
 
 	it('should render a text input with the text "Player Name"', () => {
@@ -46,7 +46,7 @@ describe('<MenuExpanded />', () => {
 			it('should call setName if the name is not blank', () => {
 				const expectedText = chance.word();
 				
-				enterPlayerName(textInput, expectedText);
+				enterText(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
 				expect(props.setName).calledOnce;
@@ -56,7 +56,7 @@ describe('<MenuExpanded />', () => {
 			it('should not call setName if the name is blank', () => {
 				const expectedText = '    ';
 				
-				enterPlayerName(textInput, expectedText);
+				enterText(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
 				expect(props.setName).not.called;

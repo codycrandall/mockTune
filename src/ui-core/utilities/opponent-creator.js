@@ -7,6 +7,4 @@ const newOpponent = {
 	car: cars[chance.natural({ min: 0, max: cars.length-1 })]
 };
 
-console.log(cars.length)
-
 export default newOpponent;

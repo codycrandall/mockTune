@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import MenuCollapsed from '../../../../src/ui-core/components/start-new-game/MenuCollapsed';
-import {assertFontAwesomeIcon} from '../../../utilities/test-utilities';
+import {expectWrapperHasIcon} from '../../../utilities/test-utilities';
 
 describe('<MenuCollapsed />', () => {
 	let menuCollapsed;
@@ -17,7 +17,7 @@ describe('<MenuCollapsed />', () => {
 	});
 
 	it('should include a down chevron', () => {
-		assertFontAwesomeIcon(menuCollapsed, faChevronDown);
+		expectWrapperHasIcon(menuCollapsed, faChevronDown);
 	});
 
 	it('should render the button with text', () => {
