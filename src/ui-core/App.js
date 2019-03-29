@@ -1,23 +1,22 @@
-import React, {useState	} from 'react';
+import React, { useState } from 'react';
 
 import './sass/App.scss';
 import './sass/style-baseline.scss';
-import MenuWrapper from './components/start-new-game/MenuWrapper';
-import {PlayerStore} from '../../src/ui-core/stores/player';
+import CreateCharacterMenu from './components/start-new-game/CreateCharacterMenu';
+import ChooseCarMenu from './components/ChooseCarMenu';
+import RaceMenu from './components/RaceMenu';
 
 export default function App() {
-
-	const [nameContext, setNameContext] = useState('');
+	const [name, setName] = useState('');
+	const [car, setCar] = useState('');
 
 	return (
 		<React.StrictMode>
-			<PlayerStore.Provider value={nameContext}>
-				<div className={'wrapper'}>
-					<MenuWrapper
-						setNameContext={setNameContext}
-					/>
-				</div>
-			</PlayerStore.Provider>
+			<div className={'wrapper'}>
+				{!car && !name && <CreateCharacterMenu setName={setName} />}
+				{!car && name && <ChooseCarMenu setCar={setCar} />}
+				{car && <RaceMenu playerCar={car} playerName={name} />}
+			</div>
 		</React.StrictMode>
 	);
 }

@@ -1,35 +1,30 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import Chance from 'chance';
-import chai, { expect } from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-chai.use(sinonChai);
 
 import MenuExpanded from 'Components/start-new-game/MenuExpanded';
 import TextInput from 'Components/TextInput';
-import { assertFontAwesomeIcon } from '../../../utilities/test-utilities';
+import { expectWrapperHasIcon } from '../../../utilities/test-utilities';
+import {enterText} from '../../../utilities/test-utilities';
 
 describe('<MenuExpanded />', () => {
-	let menuExpanded, textInput, chance, event, props;
+	let menuExpanded, textInput, event, props;
 
 	beforeEach(() => {
 		event = { stopPropagation: sinon.stub() };
 		props = {
-			setNameContext: sinon.stub()
+			setName: sinon.stub()
 		};
 		menuExpanded = mount(<MenuExpanded {...props} />);
 		textInput = menuExpanded.find(TextInput);
-		chance = new Chance();
 	});
 
-	afterEach(() => {
+	after(() => {
 		menuExpanded.unmount();
 	});
 
 	it('should render an open chevron', () => {
-		assertFontAwesomeIcon(menuExpanded, faChevronUp);
+		expectWrapperHasIcon(menuExpanded, faChevronUp);
 	});
 
 	it('should render a text input with the text "Player Name"', () => {
@@ -48,25 +43,23 @@ describe('<MenuExpanded />', () => {
 				expect(event.stopPropagation).calledOnce;
 			});
 
-			it('should call setNameContext if the name is not blank', () => {
+			it('should call setName if the name is not blank', () => {
 				const expectedText = chance.word();
-				const textEvent = { target: { value: expectedText } };
-
-				textInput.simulate('change', textEvent);
+				
+				enterText(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
-				expect(props.setNameContext).calledOnce;
-				expect(props.setNameContext).calledWith(expectedText);
+				expect(props.setName).calledOnce;
+				expect(props.setName).calledWith(expectedText);
 			});
 
-			it('should not call setNameContext if the name is blank', () => {
+			it('should not call setName if the name is blank', () => {
 				const expectedText = '    ';
-				const textEvent = { target: { value: expectedText } };
-
-				textInput.simulate('change', textEvent);
+				
+				enterText(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
-				expect(props.setNameContext).not.called;
+				expect(props.setName).not.called;
 			});
 		});
 	});

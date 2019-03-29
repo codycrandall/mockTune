@@ -1,16 +1,11 @@
-import chai, { expect } from 'chai';
 import React from 'react';
 import { mount } from 'enzyme';
-import Chance from 'chance';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-chai.use(sinonChai);
 
+import {enterText} from '../../utilities/test-utilities';
 import TextInput from 'Components/TextInput'
 
 describe('<TextInput />', () => {
 	let props, textInput;
-	const chance = new Chance; 
 	
 	beforeEach(() => {
 		props = {
@@ -20,7 +15,7 @@ describe('<TextInput />', () => {
 		textInput = mount(<TextInput {...props} />);
 	});
 
-	afterEach(() => {
+	after(() => {
 		textInput.unmount();
 	});
 
@@ -37,10 +32,8 @@ describe('<TextInput />', () => {
 
 	it('should call setInputValue with text input', () => {
 		const expectedText = chance.word();
-		const event = { target: { value: expectedText } };
-
-		textInput.simulate('change', event);
-
+		enterText(textInput, expectedText);
+		
 		expect(props.setInputValue).calledOnce;
 		expect(props.setInputValue).calledWith(expectedText);
 	})
