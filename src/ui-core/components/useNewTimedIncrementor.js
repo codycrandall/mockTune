@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useNewTimedIncrementor( incrementor = 1, interval = 10) {
+export default function useNewTimedIncrementor( incrementor = 10, interval = 10) {
 	const [incrementedValue, setIncrementedValue] = useState(0);
 
 	useEffect(() => {
