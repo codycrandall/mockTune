@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../../ui-core/sass/components/RaceMenu.scss';
 
@@ -11,19 +11,37 @@ export default function RaceMenu(props) {
 		playerName: PropTypes.string
 	};
 	const { playerCar, playerName } = props;
+	const [raceStarted, setRaceStarted] = useState(false);
 
 	function renderUser() {
-		return <RaceCar className={'player'} name={playerName} car={playerCar} />;
+		return (
+			<RaceCar
+				className={'player'}
+				name={playerName}
+				car={playerCar}
+				raceStarted={raceStarted}
+			/>
+		);
 	}
 	function renderOpponent() {
-		return <RaceCar className={'opponent'} name={newOpponent.name} car={newOpponent.car} />;
+		return (
+			<RaceCar
+				className={'opponent'}
+				name={newOpponent.name}
+				car={newOpponent.car}
+				raceStarted={raceStarted}
+			/>
+		);
 	}
-
 
 	return (
 		<div className={'race-menu'}>
-			<div> {renderUser()}</div>
-			<div>{renderOpponent()}</div>
+			{}
+			{renderUser()}
+			{renderOpponent()}
+			<div className={'start-race'} onClick={() => setRaceStarted(!raceStarted)}>
+				Start Race
+			</div>
 		</div>
 	);
 }
