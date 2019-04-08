@@ -4,7 +4,7 @@ const cars = [
 		model: 'Civic',
 		year: 1996,
 		trim: 'ex',
-		horsepower: 106,
+		horsepower: 1060,
 		'curb-weight': 2450,
 		price: 900,
 		vin:1, 

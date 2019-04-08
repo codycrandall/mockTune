@@ -16,7 +16,6 @@ export default function RaceMenu(props) {
 	function renderUser() {
 		return (
 			<RaceCar
-				className={'player'}
 				name={playerName}
 				car={playerCar}
 				raceStarted={raceStarted}
@@ -26,7 +25,6 @@ export default function RaceMenu(props) {
 	function renderOpponent() {
 		return (
 			<RaceCar
-				className={'opponent'}
 				name={newOpponent.name}
 				car={newOpponent.car}
 				raceStarted={raceStarted}
@@ -36,12 +34,17 @@ export default function RaceMenu(props) {
 
 	return (
 		<div className={'race-menu'}>
-			{}
-			{renderUser()}
-			{renderOpponent()}
-			<div className={'start-race'} onClick={() => setRaceStarted(!raceStarted)}>
-				Start Race
+			<div className={'start-line'}>
+				<div
+					className={'start-race'}
+					onClick={() => setRaceStarted(!raceStarted)}
+				>
+					Start Race
+				</div>
+				{renderUser()}
+				{renderOpponent()}
 			</div>
+			<div className={'finish-line'}>Finish</div>
 		</div>
 	);
 }

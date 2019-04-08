@@ -19,11 +19,12 @@ export default function RaceCar(props) {
 	const powerToWeightRatio = car.horsepower / car['curb-weight'];
 
 	if (raceStarted) {
-		amountMoved = powerToWeightRatio * startTimer();
+		amountMoved = powerToWeightRatio * startTimer() * 2;
 	}
 
+
 	return (
-		<div>
+		<div className={'racer'}>
 			<div>
 				{name}- {car.model}
 			</div>

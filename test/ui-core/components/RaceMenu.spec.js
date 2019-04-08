@@ -11,7 +11,8 @@ describe('RaceMenu', () => {
 		expectedOpponentCar,
 		expectedPlayerName,
 		expectedOpponentName,
-		startRace;
+		startRace,
+		startLine;
 
 	beforeEach(() => {
 		expectedPlayerCar = chance.car();
@@ -32,14 +33,13 @@ describe('RaceMenu', () => {
 		raceMenu.unmount();
 	});
 
-	it('should render with a car belonging to a player', () => {
-		expect(raceMenu.find('.player').text()).eql(
+	it('should render with a car belonging to a player and opponent', () => {
+		const startLine = raceMenu.find('.start-line');
+
+		expect(startLine.childAt(1).text()).eql(
 			`${expectedPlayerName}- ${expectedPlayerCar.model}`
 		);
-	});
-
-	it('should render a car belonging to an opponent', () => {
-		expect(raceMenu.find('.opponent').text()).eql(
+		expect(startLine.childAt(2).text()).eql(
 			`${expectedOpponentName}- ${expectedOpponentCar.model}`
 		);
 	});
@@ -49,24 +49,37 @@ describe('RaceMenu', () => {
 		expect(startRace.prop('onClick')).to.be.a('function');
 	});
 
-	it('should render the finish line, then the player, then the opponent, then the start/stop race button', () => {
-		expect(getClassNameForChild(0)).eql('player');
-		expect(getClassNameForChild(1)).eql('opponent');
-		expect(getClassNameForChild(2)).eql('start-race');
+	it('should include a finish line', () => {
+		expect(raceMenu.find('.finish-line').text()).eql('Finish');
+	});
+
+	it('should render the start line then the finish line', () => {
+		expect(getClassNameForChild(raceMenu, 0)).eql('start-line');
+		expect(getClassNameForChild(raceMenu, 1)).eql('finish-line');
 	});
 
 	it('should trigger the start to the race', () => {
-		expect(raceMenu.find('.player').prop('raceStarted')).eql(false);
-		expect(raceMenu.find('.opponent').prop('raceStarted')).eql(false);
+		expectRaceStarted(false);
+
 		startRace.simulate('click');
-		expect(raceMenu.find('.player').prop('raceStarted')).eql(true);
-		expect(raceMenu.find('.opponent').prop('raceStarted')).eql(true);
+
+		expectRaceStarted(true);
 	});
 
-	function getClassNameForChild(childIndex) {
-		return raceMenu
+	it('should have the race end when a car gets to the finish line', () => {
+		
+	})
+
+	function getClassNameForChild(menu, childIndex) {
+		return menu
 			.find('.race-menu')
 			.childAt(childIndex)
 			.prop('className');
+	}
+
+	function expectRaceStarted(bool) {
+		const startLine = raceMenu.find('.start-line');
+		expect(startLine.childAt(1).prop('raceStarted')).eql(bool) 
+		expect(startLine.childAt(2).prop('raceStarted')).eql(bool) 
 	}
 });

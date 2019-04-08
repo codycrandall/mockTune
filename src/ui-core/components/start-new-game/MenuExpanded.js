@@ -30,7 +30,7 @@ export default function MenuExpanded(props) {
 			<FontAwesomeIcon
 				icon={faChevronUp}
 				size={'xs'}
-				className={`chevron`}
+				className={`chevron-up`}
 			/>
 			<button
 				onClick={event => {

@@ -11,7 +11,7 @@ export default function MenuCollapsed() {
 			<FontAwesomeIcon
 				icon={faChevronDown}
 				size={'xs'}
-				className={`chevron`}
+				className={`chevron-down`}
 			/>
 			Start New Game
 		</div>
