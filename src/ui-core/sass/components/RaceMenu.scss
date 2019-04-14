@@ -4,6 +4,12 @@ div.race-menu {
 	display:flex;
 	color: green;
 	justify-content: space-between;
+
+	.competitor {
+		display: flex;
+		flex-direction: column;
+		padding: 10px 0;
+	}
 	
 	.finish-line {
 		border-left: 1px solid green;

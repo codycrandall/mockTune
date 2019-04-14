@@ -12,30 +12,24 @@ export default function RaceCar(props) {
 		raceStarted: PropTypes.bool
 	};
 
-	let amountMoved = 0;
+	let amountMoved;
 
-	const { car, name, raceStarted } = props;
+	const { car, raceStarted } = props;
 
 	const powerToWeightRatio = car.horsepower / car['curb-weight'];
 
 	if (raceStarted) {
-		amountMoved = powerToWeightRatio * startTimer() * 2;
+		amountMoved = powerToWeightRatio * startTimer();
 	}
 
-
 	return (
-		<div className={'racer'}>
-			<div>
-				{name}- {car.model}
-			</div>
-			<FontAwesomeIcon
-				icon={faCarSide}
-				size={'sm'}
-				style={{
-					paddingLeft: `${amountMoved}px`,
-					color: 'white'
-				}}
-			/>
-		</div>
+		<FontAwesomeIcon
+			className={'racer'}
+			icon={faCarSide}
+			size={'sm'}
+			style={{
+				left: `${amountMoved}px`
+			}}
+		/>
 	);
 }

@@ -2,7 +2,7 @@ import React from 'React';
 import { mount } from 'enzyme';
 
 import RaceMenu from 'Components/RaceMenu';
-import newOpponent from '../../../src/ui-core/utilities/opponent-creator';
+import opponent from '../../../src/ui-core/utilities/opponent-creator';
 
 describe('RaceMenu', () => {
 	let raceMenu,
@@ -11,14 +11,13 @@ describe('RaceMenu', () => {
 		expectedOpponentCar,
 		expectedPlayerName,
 		expectedOpponentName,
-		startRace,
-		startLine;
+		startRace;
 
 	beforeEach(() => {
 		expectedPlayerCar = chance.car();
 		expectedPlayerName = chance.name();
-		expectedOpponentCar = newOpponent.car;
-		expectedOpponentName = newOpponent.name;
+		expectedOpponentCar = opponent.car;
+		expectedOpponentName = opponent.name;
 
 		props = {
 			playerCar: expectedPlayerCar,
@@ -66,9 +65,6 @@ describe('RaceMenu', () => {
 		expectRaceStarted(true);
 	});
 
-	it('should have the race end when a car gets to the finish line', () => {
-		
-	})
 
 	function getClassNameForChild(menu, childIndex) {
 		return menu
@@ -78,8 +74,6 @@ describe('RaceMenu', () => {
 	}
 
 	function expectRaceStarted(bool) {
-		const startLine = raceMenu.find('.start-line');
-		expect(startLine.childAt(1).prop('raceStarted')).eql(bool) 
-		expect(startLine.childAt(2).prop('raceStarted')).eql(bool) 
+		expect(raceMenu.find('RaceCar').first().prop('raceStarted')).eql(bool) 
 	}
 });

@@ -1,36 +1,44 @@
 import React from 'React';
 import { mount } from 'enzyme';
 import { faCarSide } from '@fortawesome/free-solid-svg-icons';
+import sinon from 'sinon';
 
 import RaceCar from 'Components/RaceCar';
 import { expectWrapperHasIcon } from '../../utilities/test-utilities';
 
 describe('RaceCar', () => {
-	let raceCarWrapper, props, expectedCar, expectedName;
+	let expectedCar, expectedName;
 
 	beforeEach(() => {
 		expectedCar = chance.car();
 		expectedName = chance.name();
+	});
 
-		props = {
+	it('should render a racecar icon', () => {
+		const raceCar = render();
+
+		expectWrapperHasIcon(raceCar, faCarSide);
+	});
+
+	it('should set amountMoved based off car specs + time', () => {
+		expectedCar.horsepower = 1;
+		expectedCar['curb-weight'] = 1;
+		const clock = sinon.useFakeTimers();
+		const raceCar = render({ raceStarted: true });
+		
+		clock.tick(10);
+		raceCar.update();
+
+		// expect(raceCar.prop('style').left).eql('10px');
+	});
+
+	function render(overrides) {
+		const props = {
 			name: expectedName,
-			car: expectedCar
+			car: expectedCar,
+			raceStarted: false
 		};
 
-		raceCarWrapper = mount(<RaceCar {...props} />);
-	});
-
-	afterEach(() => {
-		raceCarWrapper.unmount();
-	});
-
-	it('should render racer info before the car icon', () => {
-		const raceCar= raceCarWrapper.childAt(0);
-		
-		expect(raceCar.childAt(0).text()).eql(
-			`${expectedName}- ${expectedCar.model}`
-		);
-		
-		expectWrapperHasIcon(raceCar.childAt(1), faCarSide);
-	});
+		return mount(<RaceCar {...props} {...overrides} />).childAt(0);
+	}
 });

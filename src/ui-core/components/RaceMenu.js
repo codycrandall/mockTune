@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../../ui-core/sass/components/RaceMenu.scss';
 
 import RaceCar from './RaceCar';
-import newOpponent from '../utilities/opponent-creator';
+import opponent from '../utilities/opponent-creator';
 
 export default function RaceMenu(props) {
 	RaceMenu.propTypes = {
@@ -13,22 +13,20 @@ export default function RaceMenu(props) {
 	const { playerCar, playerName } = props;
 	const [raceStarted, setRaceStarted] = useState(false);
 
-	function renderUser() {
+	function renderCompetitor(competitor, car) {
 		return (
-			<RaceCar
-				name={playerName}
-				car={playerCar}
-				raceStarted={raceStarted}
-			/>
+			<div className={'competitor'}>
+				<RaceCar car={car} raceStarted={raceStarted}/>
+				{renderCompetitorInfo(competitor, car)}
+			</div>
 		);
 	}
-	function renderOpponent() {
+
+	function renderCompetitorInfo(competitor , car) {
 		return (
-			<RaceCar
-				name={newOpponent.name}
-				car={newOpponent.car}
-				raceStarted={raceStarted}
-			/>
+			<div>
+				{competitor}- {car.model}
+			</div>
 		);
 	}
 
@@ -41,8 +39,8 @@ export default function RaceMenu(props) {
 				>
 					Start Race
 				</div>
-				{renderUser()}
-				{renderOpponent()}
+				{renderCompetitor(playerName, playerCar)}
+				{renderCompetitor(opponent.name, opponent.car)}
 			</div>
 			<div className={'finish-line'}>Finish</div>
 		</div>
