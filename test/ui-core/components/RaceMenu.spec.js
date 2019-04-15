@@ -24,6 +24,7 @@ describe('RaceMenu', () => {
 			playerName: expectedPlayerName
 		};
 
+		
 		raceMenu = mount(<RaceMenu {...props} />);
 		startRace = raceMenu.find('.start-race');
 	});
@@ -35,10 +36,10 @@ describe('RaceMenu', () => {
 	it('should render with a car belonging to a player and opponent', () => {
 		const startLine = raceMenu.find('.start-line');
 
-		expect(startLine.childAt(1).text()).eql(
+		expect(startLine.childAt(2).text()).eql(
 			`${expectedPlayerName}- ${expectedPlayerCar.model}`
 		);
-		expect(startLine.childAt(2).text()).eql(
+		expect(startLine.childAt(3).text()).eql(
 			`${expectedOpponentName}- ${expectedOpponentCar.model}`
 		);
 	});
@@ -74,6 +75,6 @@ describe('RaceMenu', () => {
 	}
 
 	function expectRaceStarted(bool) {
-		expect(raceMenu.find('RaceCar').first().prop('raceStarted')).eql(bool) 
+		expect(raceMenu.find('RaceCar').first().prop('raceInProgress')).eql(bool) 
 	}
 });

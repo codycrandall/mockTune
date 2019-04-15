@@ -4,7 +4,7 @@ var chance = new Chance();
 module.exports = chance;
 
 chance.mixin({
-	car: () => ({
+	car: (overrides= {}) => ({
 		make: chance.word(),
 		model: chance.word(),
 		year: chance.natural(),
@@ -12,6 +12,7 @@ chance.mixin({
 		horsepower: chance.floating({ min: 1 }),
 		'curb-weight': chance.floating({ min: 1 }),
 		price: chance.dollar(),
-		vin:0, reliability:  chance.normal()
+		vin:0, reliability:  chance.normal(),
+		...overrides
 	})
 });

@@ -8,18 +8,33 @@ import '../sass/components/RaceCar.scss';
 export default function RaceCar(props) {
 	RaceCar.propTypes = {
 		car: PropTypes.object,
-		name: PropTypes.string,
-		raceStarted: PropTypes.bool
+		competitor: PropTypes.string,
+		raceInProgress: PropTypes.bool,
+		setRaceInProgress: PropTypes.func,
+		setWinner: PropTypes.func,
+		finishLineCoordinates: PropTypes.number
 	};
 
-	let amountMoved;
+	let amountMoved= 0;
 
-	const { car, raceStarted } = props;
+	const {
+		car,
+		raceInProgress,
+		setRaceInProgress,
+		setWinner,
+		competitor
+	} = props;
 
 	const powerToWeightRatio = car.horsepower / car['curb-weight'];
 
-	if (raceStarted) {
+	if (raceInProgress) {
 		amountMoved = powerToWeightRatio * startTimer();
+		if (amountMoved >= props.finishLineCoordinates) {
+			setWinner(competitor);
+			setRaceInProgress(false);
+		}
+	} else {
+		amountMoved = 0;
 	}
 
 	return (

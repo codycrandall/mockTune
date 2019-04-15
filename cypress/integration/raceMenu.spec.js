@@ -1,4 +1,6 @@
 import { createCharacter } from '../support/createCharacter';
+import Chance from 'chance';
+const chance = new Chance();
 
 describe('race menu', () => {
 	beforeEach(() => {
@@ -6,12 +8,21 @@ describe('race menu', () => {
 	});
 
 	it('should allow for two players to race', () => {
-		createCharacter();
+		const name = chance.name();
+		createCharacter(name);
 
-		cy.get('.car')
-			.first()
-			.click();
+		selectFirstCar();
 		
 		cy.get('.start-race').click();
+
+		cy.wait(10000);
+
+		cy.get('.winner-text').contains(`winner- ${name}`)
 	});
 });
+
+function selectFirstCar() {
+	cy.get( '.car' )
+		.first()
+		.click();
+}
