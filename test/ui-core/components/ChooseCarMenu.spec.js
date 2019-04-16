@@ -4,21 +4,30 @@ import { mount } from 'enzyme';
 import ChooseCarMenu from 'Components/ChooseCarMenu';
 import Cars from '../../../src/ui-core/constants/cars';
 
-describe('<ChooseCarMenu/>', () => {
-	let cars, chooseCarMenu
+describe.only('<ChooseCarMenu/>', () => {
+	let chooseCarMenu, props;
 
-	
 	beforeEach(() => {
-		chooseCarMenu = mount(<ChooseCarMenu/>);
-		cars = chooseCarMenu.find('div').children();
+		props = {
+			player: {
+				bankBalance: chance.natural({ max: 100000 })
+			}
+		};
+		chooseCarMenu = mount(<ChooseCarMenu {...props}/>);
 	});
 
 	after(() => {
 		chooseCarMenu.unmount();
 	});
-	it('should render a list of cars', () => {
+	it('should render a list of cars with props', () => {
 		const carListLength = Cars.length;
+		const carList = chooseCarMenu.find('.car-list');
+		expect(carList.children()).lengthOf(carListLength);
+	});
 
-		expect(cars).lengthOf(carListLength);
+	it('should render with a bank balance', () => {
+		const bankBalance = chooseCarMenu.find('.bank-balance');
+
+		expect(bankBalance.text()).eql(`Current Bank Balance: $${props.player.bankBalance}`);
 	});
 });

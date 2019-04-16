@@ -3,12 +3,12 @@ import CarListItem from 'Components/CarListItem';
 import { mount } from 'enzyme';
 
 describe('CarListItem', () => {
-	let car, setCar, expectedCar;
+	let car, setPlayer, expectedCar;
 
 	beforeEach(() => {
 		expectedCar = chance.car();
-		setCar = sinon.stub();
-		car = mount(<CarListItem car={expectedCar} setCar={setCar} />);
+		setPlayer = sinon.stub();
+		car = mount(<CarListItem car={expectedCar} setPlayer={setPlayer} />);
 	});
 
 	it('should render with props', () => {
@@ -26,9 +26,9 @@ describe('CarListItem', () => {
 		expect(carAtIndex(3)).eql(`cost: ${expectedCar.price}`);
 	});
 
-	it('should call setCar when a car is clicked', () => {
+	it('should call setPlayer when a car is clicked', () => {
 		car.simulate('click');
-		expect(setCar).calledWith(expectedCar);
+		expect(setPlayer).calledWith(expectedCar);
 	}); 
 
 	const carAtIndex = (index) => {

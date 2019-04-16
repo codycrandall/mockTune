@@ -6,14 +6,21 @@ import CarListItem from './CarListItem';
 
 export default function ChooseCarMenu(props) {
 	ChooseCarMenu.propTypes = {
-		setCar: PropTypes.func
+		setPlayer: PropTypes.func,
+		player: PropTypes.object
 	};
-
+	const { player, setPlayer } = props;
+	
 	return (
 		<div>
-			{cars.map((car, key) => (
-				<CarListItem car={car} key={key} setCar={props.setCar} />
-			))}
+			<div className={'bank-balance'}>
+				Current Bank Balance: ${player.bankBalance}
+			</div>
+			<div className={'car-list'}>
+				{cars.map((car, key) => (
+					<CarListItem car={car} key={key} setPlayer={setPlayer} player={player}/>
+				))}
+			</div>
 		</div>
 	);
 }
