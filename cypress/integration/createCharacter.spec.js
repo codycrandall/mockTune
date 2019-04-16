@@ -21,6 +21,4 @@ describe('CreateCharacter', () => {
 
 		cy.get('span.car').should('exist');
 	});
-
-	
 }); 

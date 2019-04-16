@@ -34,7 +34,7 @@ export default function RaceMenu(props) {
 	function renderCompetitorInfo(competitor, car) {
 		return (
 			<div>
-				{competitor}- {car.model}
+				{competitor}- {car.make} {car.model}
 			</div>
 		);
 	}
@@ -47,16 +47,15 @@ export default function RaceMenu(props) {
 	return (
 		<div className={'race-menu'}>
 			<div className={'start-line'}>
-				<div
-					className={'start-race'}
-					onClick={handleStartRace}
-				>
+				<div className={'start-race'} onClick={handleStartRace}>
 					Start Race
 				</div>
-				<div className={'winner-text'}>{winner && `winner- ${winner}`}</div>
-				{renderCompetitor(playerName, playerCar)}
-				{renderCompetitor(opponent.name, opponent.car)}
+				<div className={'competitors'}>
+					{renderCompetitor(playerName, playerCar)}
+					{renderCompetitor(opponent.name, opponent.car)}
+				</div>
 			</div>
+			<div className={'winner-text'}>{winner && `winner- ${winner}`}</div>
 			<div
 				className={'finish-line'}
 				ref={el => {

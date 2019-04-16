@@ -1,4 +1,5 @@
 import { createCharacter } from '../support/createCharacter';
+import selectFirstCar from '../support/selectFirstCar'
 import Chance from 'chance';
 const chance = new Chance();
 
@@ -15,14 +16,6 @@ describe('race menu', () => {
 		
 		cy.get('.start-race').click();
 
-		cy.wait(10000);
-
 		cy.get('.winner-text').contains(`winner- ${name}`)
 	});
 });
-
-function selectFirstCar() {
-	cy.get( '.car' )
-		.first()
-		.click();
-}

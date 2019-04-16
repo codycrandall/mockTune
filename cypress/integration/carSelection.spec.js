@@ -1,4 +1,5 @@
 import { createCharacter } from '../support/createCharacter';
+import selectFirstCar from '../support/selectFirstCar';
 
 describe('car selection menu', () => {
 	beforeEach(() => {
@@ -8,7 +9,8 @@ describe('car selection menu', () => {
 	it('should allow for car selection then take the player to the race menu', () => {
 		createCharacter();
 
-		cy.get('.car').first().click();
+		selectFirstCar();
+		
 		cy.get('.race-menu').should('exist');
 	});
 });

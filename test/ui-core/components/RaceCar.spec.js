@@ -48,7 +48,6 @@ describe('RaceCar', () => {
 		clock.tick(10);
 		raceCar.update();
 
-		// expect(raceCar.prop('style').left).eql('100px');
 		expect(props.setWinner).calledOnce;
 		expect(props.setWinner).calledWith(expectedName);
 
@@ -72,6 +71,6 @@ describe('RaceCar', () => {
 	});
 
 	function render(props, overrides = {}) {
-		return mount(<RaceCar {...props} {...overrides} />).childAt(0);
+		return mount(<RaceCar {...props} {...overrides} />).find('FontAwesomeIcon.racer');
 	}
 });
