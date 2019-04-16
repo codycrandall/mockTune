@@ -9,7 +9,7 @@ export default function CreateCharacterMenu(props) {
 	const [isMenuExpanded, setMenuExpanded] = useState(false);
 
 	CreateCharacterMenu.propTypes = {
-		setName: PropTypes.func,
+		setPlayer: PropTypes.func,
 	};
 
 	return (
@@ -19,7 +19,7 @@ export default function CreateCharacterMenu(props) {
 		>
 			{!isMenuExpanded && <MenuCollapsed />}
 			{isMenuExpanded && (
-				<MenuExpanded setName={props.setName} />
+				<MenuExpanded setPlayer={props.setPlayer} />
 			)}
 		</div>
 	);

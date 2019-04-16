@@ -13,7 +13,7 @@ describe('<MenuExpanded />', () => {
 	beforeEach(() => {
 		event = { stopPropagation: sinon.stub() };
 		props = {
-			setName: sinon.stub()
+			setPlayer: sinon.stub()
 		};
 		menuExpanded = mount(<MenuExpanded {...props} />);
 		textInput = menuExpanded.find(TextInput);
@@ -43,23 +43,23 @@ describe('<MenuExpanded />', () => {
 				expect(event.stopPropagation).calledOnce;
 			});
 
-			it('should call setName if the name is not blank', () => {
+			it('should call setPlayer if the name is not blank', () => {
 				const expectedText = chance.word();
 				
 				enterText(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
-				expect(props.setName).calledOnce;
-				expect(props.setName).calledWith(expectedText);
+				expect(props.setPlayer).calledOnce;
+				expect(props.setPlayer).calledWith({name: expectedText});
 			});
 
-			it('should not call setName if the name is blank', () => {
+			it('should not call setPlayer if the name is blank', () => {
 				const expectedText = '    ';
 				
 				enterText(textInput, expectedText);
 				menuExpanded.find('button').simulate('click', event);
 
-				expect(props.setName).not.called;
+				expect(props.setPlayer).not.called;
 			});
 		});
 	});

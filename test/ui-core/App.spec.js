@@ -21,7 +21,7 @@ describe('<App/>', () => {
 
 	it('should initially render a create character menu', () => {
 		expect(
-			wrapper.find(CreateCharacterMenu).prop('setName')
+			wrapper.find(CreateCharacterMenu).prop('setPlayer')
 		).to.be.a('function');
 
 		expect(wrapper.find(ChooseCarMenu)).lengthOf(0);		

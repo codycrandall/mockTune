@@ -15,14 +15,6 @@ server.route({
 	}
 });
 
-server.route({
-	method: "GET",
-	path: "/{name}",
-	handler: (request, h) => {
-		return "Hello, " + encodeURIComponent(request.params.name) + "!";
-	}
-});
-
 const init = async () => {
 	await server.start();
 	console.log(`Server running at: ${server.info.uri}`);

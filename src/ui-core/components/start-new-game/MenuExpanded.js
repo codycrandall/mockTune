@@ -10,13 +10,13 @@ export default function MenuExpanded(props) {
 	const [inputValue, setInputValue] = useState('');
 
 	MenuExpanded.propTypes = {
-		setName: PropTypes.func
+		setPlayer: PropTypes.func
 	};
 
 	function handleClick(event) {
 		event.stopPropagation();
 		if (inputValue && inputValue.trim(' ') !== '') {
-			props.setName(inputValue);
+			props.setPlayer({name: inputValue});
 		}
 	}
 
