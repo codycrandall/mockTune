@@ -7,14 +7,14 @@ import ChooseCarMenu from './components/ChooseCarMenu';
 import RaceMenu from './components/RaceMenu';
 
 export default function App() {
-	const [player, setPlayer] = useState(null);
+	const [player, setPlayer] = useState({bankBalance: 2000});
 	const [car, setCar] = useState('');
 
 	return (
 		<React.StrictMode>
 			<div className={'wrapper'}>
-				{!car && !player && <CreateCharacterMenu setPlayer={setPlayer} />}
-				{!car && player && <ChooseCarMenu setCar={setCar} />}
+				{!car && !player.name && <CreateCharacterMenu setPlayer={setPlayer} />}
+				{!car && player.name && <ChooseCarMenu setCar={setCar} />}
 				{car && <RaceMenu playerCar={car} player={player} />}
 			</div>
 		</React.StrictMode>
