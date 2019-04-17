@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 export default function CarListItem(props) {
 	CarListItem.propTypes = {
 		car: PropTypes.object,
-		setPlayer: PropTypes.func
+		setPlayer: PropTypes.func,
+		player: PropTypes.object
 	};
 
-	const { car, setPlayer, player} = props;
-
+	const { car, setPlayer, player } = props;
 
 	return (
-		<span className={'car'} onClick={() =>setPlayer({car: car, bankBalance: player.bankBalance - car.price})}>
+		<span className={'car'} onClick={() => handleOnClick()}>
 			<div className={'model-info'}>
 				{car.year} {car.make} {car.model} {car.trim}
 			</div>
@@ -20,4 +20,11 @@ export default function CarListItem(props) {
 			<div>cost: {car.price}</div>
 		</span>
 	);
+
+	function handleOnClick() {
+		const updatedBankBalance = player.bankBalance - car.price;
+		if (updatedBankBalance >= 0) {
+			setPlayer({ car: car, bankBalance: updatedBankBalance });
+		}
+	}
 }

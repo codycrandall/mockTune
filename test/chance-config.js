@@ -11,7 +11,7 @@ chance.mixin({
 		trim: chance.string(),
 		horsepower: chance.floating({ min: 1 }),
 		'curb-weight': chance.floating({ min: 1 }),
-		price: chance.dollar(),
+		price: chance.natural(),
 		vin:0, reliability:  chance.normal(),
 		...overrides
 	})

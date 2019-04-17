@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import ChooseCarMenu from 'Components/ChooseCarMenu';
 import Cars from '../../../src/ui-core/constants/cars';
 
-describe.only('<ChooseCarMenu/>', () => {
+describe('<ChooseCarMenu/>', () => {
 	let chooseCarMenu, props;
 
 	beforeEach(() => {

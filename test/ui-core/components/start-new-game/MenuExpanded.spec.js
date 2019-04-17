@@ -13,7 +13,8 @@ describe('<MenuExpanded />', () => {
 	beforeEach(() => {
 		event = { stopPropagation: sinon.stub() };
 		props = {
-			setPlayer: sinon.stub()
+			setPlayer: sinon.stub(),
+			player: {bankBalance : chance.natural()}
 		};
 		menuExpanded = mount(<MenuExpanded {...props} />);
 		textInput = menuExpanded.find(TextInput);
@@ -50,8 +51,15 @@ describe('<MenuExpanded />', () => {
 				menuExpanded.find('button').simulate('click', event);
 
 				expect(props.setPlayer).calledOnce;
-				expect(props.setPlayer).calledWith({name: expectedText});
 			});
+			
+			it('should not override existing bankBalance in player object', () => {
+				const expectedText = chance.word();
+				
+				enterText(textInput, expectedText);
+				menuExpanded.find('button').simulate('click', event);
+				expect(props.setPlayer).calledWith({bankBalance: props.player.bankBalance, name: expectedText});
+			})
 
 			it('should not call setPlayer if the name is blank', () => {
 				const expectedText = '    ';
