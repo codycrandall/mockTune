@@ -7,10 +7,10 @@ import opponent from '../utilities/opponent-creator';
 
 export default function RaceMenu(props) {
 	RaceMenu.propTypes = {
-		playerCar: PropTypes.object,
-		playerName: PropTypes.string
+		player: PropTypes.object
 	};
-	const { playerCar, playerName } = props;
+
+	const { player } = props;
 	const [raceInProgress, setRaceInProgress] = useState(false);
 	const [finishLineCoordinates, setFinishLineCoordinates] = useState(null);
 	const [winner, setWinner] = useState(null);
@@ -51,7 +51,7 @@ export default function RaceMenu(props) {
 					Start Race
 				</div>
 				<div className={'competitors'}>
-					{renderCompetitor(playerName, playerCar)}
+					{renderCompetitor(player.name, player.car)}
 					{renderCompetitor(opponent.name, opponent.car)}
 				</div>
 			</div>

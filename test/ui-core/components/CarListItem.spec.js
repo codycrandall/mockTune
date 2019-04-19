@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import CarListItem from 'Components/CarListItem';
 import { mount } from 'enzyme';
 
@@ -8,9 +8,10 @@ describe('CarListItem', () => {
 	beforeEach(() => {
 		props = {
 			setPlayer: sinon.stub(),
-			car: chance.car(),
+			car: chance.car({ price: 100 }),
 			player: {
-				bankBalance: chance.natural()
+				name: chance.name(),
+				bankBalance: 100
 			}
 		};
 		expectedCar = props.car;
@@ -32,13 +33,10 @@ describe('CarListItem', () => {
 		expect(carPropsAtIndex(car, 3)).eql(`cost: ${expectedCar.price}`);
 	});
 
-	describe('bank balance is greater than  car price', () => {
+	describe('bank balance is greater than car price', () => {
 		it('should call setPlayer on click', () => {
 			const overrides = {
-				car: chance.car({ price: 99 }),
-				player: {
-					bankBalance: 100
-				}
+				car: chance.car({ price: 99 })
 			};
 
 			const car = render(overrides);
@@ -47,26 +45,22 @@ describe('CarListItem', () => {
 
 			expect(props.setPlayer).calledWith({
 				car: overrides.car,
-				bankBalance: overrides.player.bankBalance - overrides.car.price
+				bankBalance: props.player.bankBalance - overrides.car.price,
+				name: props.player.name
 			});			
 		});
 	});
-	describe('bank balance is equal to car price', () => {
-		it('should call setPlayer on click, and leave a bank balance of 0', () => {
-			const overrides = {
-				car: chance.car({ price: 100 }),
-				player: {
-					bankBalance: 100
-				}
-			};
 
-			const car = render(overrides);
+	describe('bank balance is equal to car price', () => {
+		it('should update player car, bankBalance, but keep the name the same', () => {
+			const car = render();
 
 			car.simulate('click');
 
 			expect(props.setPlayer).calledWith({
-				car: overrides.car,
-				bankBalance: overrides.player.bankBalance - overrides.car.price
+				name: props.player.name,
+				car: props.car,
+				bankBalance: props.player.bankBalance - props.car.price
 			});			
 		});
 	});
@@ -74,10 +68,7 @@ describe('CarListItem', () => {
 	describe('bank balance is less than the cost of a car', () => {
 		it('should not call setPlayer on click', () => {
 			const overrides = {
-				car: chance.car({ price: 101 }),
-				player: {
-					bankBalance: 100
-				}
+				car: chance.car({ price: 101 })
 			};
 
 			const car = render(overrides);
@@ -95,7 +86,7 @@ describe('CarListItem', () => {
 			.text();
 	};
 
-	function render(overrides) {
+	function render(overrides = {}) {
 		return mount(<CarListItem {...props} {...overrides} />);
 	}
 });

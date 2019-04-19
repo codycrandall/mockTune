@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { mount } from 'enzyme';
 
 import RaceMenu from 'Components/RaceMenu';
@@ -20,11 +20,9 @@ describe('RaceMenu', () => {
 		expectedOpponentName = opponent.name;
 
 		props = {
-			playerCar: expectedPlayerCar,
-			playerName: expectedPlayerName
+			player: { car: expectedPlayerCar, name: expectedPlayerName }
 		};
 
-		
 		raceMenu = mount(<RaceMenu {...props} />);
 		startRace = raceMenu.find('.start-race');
 	});
@@ -35,7 +33,11 @@ describe('RaceMenu', () => {
 
 	it('should render with a car belonging to a player and opponent', () => {
 		expectCompetitorInfoAtIndex(expectedPlayerName, expectedPlayerCar, 0);
-		expectCompetitorInfoAtIndex(expectedOpponentName, expectedOpponentCar, 1);
+		expectCompetitorInfoAtIndex(
+			expectedOpponentName,
+			expectedOpponentCar,
+			1
+		);
 	});
 
 	it('should include a "start race" button', () => {
@@ -61,7 +63,6 @@ describe('RaceMenu', () => {
 		expectRaceStarted(true);
 	});
 
-
 	function getClassNameForChild(menu, childIndex) {
 		return menu
 			.find('.race-menu')
@@ -70,13 +71,19 @@ describe('RaceMenu', () => {
 	}
 
 	function expectRaceStarted(bool) {
-		expect(raceMenu.find('RaceCar').first().prop('raceInProgress')).eql(bool) 
+		expect(
+			raceMenu
+				.find('RaceCar')
+				.first()
+				.prop('raceInProgress')
+		).eql(bool);
 	}
-	
-	function expectCompetitorInfoAtIndex(expectedName, expectedCar, index ) {
+
+	function expectCompetitorInfoAtIndex(expectedName, expectedCar, index) {
 		const competitors = raceMenu.find('.competitors');
-		
-		expect( competitors.childAt(index).text()).eql( `${expectedName}- ${expectedCar.make} ${expectedCar.model}` );
+
+		expect(competitors.childAt(index).text()).eql(
+			`${expectedName}- ${expectedCar.make} ${expectedCar.model}`
+		);
 	}
 });
-

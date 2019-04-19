@@ -16,6 +16,7 @@ export default function MenuExpanded(props) {
 
 	function handleClick(event) {
 		event.stopPropagation();
+
 		if (inputValue && inputValue.trim(' ') !== '') {
 			props.setPlayer(Object.assign({}, props.player, {name: inputValue}));
 		}

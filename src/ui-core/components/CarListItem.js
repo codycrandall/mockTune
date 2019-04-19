@@ -9,9 +9,11 @@ export default function CarListItem(props) {
 	};
 
 	const { car, setPlayer, player } = props;
-
 	return (
-		<span className={'car'} onClick={() => handleOnClick()}>
+		<span
+			className={'car'}
+			onClick={() => handleClick()}
+		>
 			<div className={'model-info'}>
 				{car.year} {car.make} {car.model} {car.trim}
 			</div>
@@ -21,10 +23,11 @@ export default function CarListItem(props) {
 		</span>
 	);
 
-	function handleOnClick() {
+	function handleClick() {
 		const updatedBankBalance = player.bankBalance - car.price;
 		if (updatedBankBalance >= 0) {
-			setPlayer({ car: car, bankBalance: updatedBankBalance });
+			setPlayer(Object.assign({}, player, {car: car, bankBalance: updatedBankBalance }));
+		
 		}
 	}
 }

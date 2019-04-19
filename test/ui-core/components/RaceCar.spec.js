@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { mount } from 'enzyme';
 import { faCarSide } from '@fortawesome/free-solid-svg-icons';
 import sinon from 'sinon';

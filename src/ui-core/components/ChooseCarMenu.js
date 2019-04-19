@@ -12,7 +12,7 @@ export default function ChooseCarMenu(props) {
 	const { player, setPlayer } = props;
 	
 	return (
-		<div>
+		<div className={'choose-car-menu'}>
 			<div className={'bank-balance'}>
 				Current Bank Balance: ${player.bankBalance}
 			</div>
