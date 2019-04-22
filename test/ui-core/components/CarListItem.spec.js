@@ -77,6 +77,15 @@ describe('CarListItem', () => {
 
 			expect(props.setPlayer).not.called;
 		});
+
+		it('should add "disabled" to the className', () => {
+			const overrides = {
+				car: chance.car({ price: 101 })
+			};
+
+			const car = render(overrides).find('.car.disabled');
+			expect(car).lengthOf(1);
+		});
 	});
 
 	const carPropsAtIndex = (car, index) => {

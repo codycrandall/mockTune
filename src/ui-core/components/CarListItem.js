@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../sass/components/CarListItem.scss';
 
 export default function CarListItem(props) {
 	CarListItem.propTypes = {
@@ -7,11 +8,19 @@ export default function CarListItem(props) {
 		setPlayer: PropTypes.func,
 		player: PropTypes.object
 	};
-
+	let disabledCursor = '';
 	const { car, setPlayer, player } = props;
+	const updatedBankBalance = player.bankBalance - car.price;
+	
+	const updatedBalanceIsPositive = updatedBankBalance >= 0;
+	
+	if(!updatedBalanceIsPositive) {
+		disabledCursor = ' disabled'
+	}
+
 	return (
 		<span
-			className={'car'}
+			className={`car${disabledCursor}`}
 			onClick={() => handleClick()}
 		>
 			<div className={'model-info'}>
@@ -24,8 +33,7 @@ export default function CarListItem(props) {
 	);
 
 	function handleClick() {
-		const updatedBankBalance = player.bankBalance - car.price;
-		if (updatedBankBalance >= 0) {
+		if (updatedBalanceIsPositive) {
 			setPlayer(Object.assign({}, player, {car: car, bankBalance: updatedBankBalance }));
 		
 		}
