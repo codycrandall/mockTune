@@ -4,12 +4,12 @@ describe('CreateCharacter', () => {
 	beforeEach(() => {
 		cy.visit('http://localhost:8080');
 	});
-	
+
 	it('should toggle the start new game menu', () => {
 		const menuExpanded = '.chevron-up';
-		const menuCollapsed = '.chevron-down';
-		
-		cy.get(menuCollapsed).click();
+		const mainMenu = '.chevron-down';
+
+		cy.get(mainMenu).click();
 		cy.get('button').contains('GO').should('exist');
 
 		cy.get(menuExpanded).click();

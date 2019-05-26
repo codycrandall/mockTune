@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../sass/components/CarListItem.scss';
+import VehicleInfo from './VehicleInfo';
 
 export default function CarListItem(props) {
 	CarListItem.propTypes = {
@@ -8,13 +9,21 @@ export default function CarListItem(props) {
 		setPlayer: PropTypes.func,
 		player: PropTypes.object
 	};
+
+	const [boldText, setBoldText] = useState('');
 	let disabledCursor = '';
+	let makeBold = '';
+	let carExistsInGarage;
 	const { car, setPlayer, player } = props;
 	const updatedBankBalance = player.bankBalance - car.price;
-	
+
 	const updatedBalanceIsPositive = updatedBankBalance >= 0;
-	
-	if(!updatedBalanceIsPositive) {
+
+	if (player.car && car.make === player.car.make) {
+		carExistsInGarage = true;
+	}
+
+	if (!updatedBalanceIsPositive || carExistsInGarage) {
 		disabledCursor = ' disabled'
 	}
 
@@ -24,18 +33,23 @@ export default function CarListItem(props) {
 			onClick={() => handleClick()}
 		>
 			<div className={'model-info'}>
-				{car.year} {car.make} {car.model} {car.trim}
+				<VehicleInfo car={car} />
 			</div>
 			<div>horsepower: {car.horsepower}</div>
 			<div>curb weight: {car['curb-weight']}</div>
 			<div>cost: {car.price}</div>
+			{carExistsInGarage && <div className={`purchased${boldText}`}>already purchased</div>}
+			{!updatedBalanceIsPositive && <div className={'too-expensive'}>can't afford this car</div>}
 		</span>
 	);
-
 	function handleClick() {
-		if (updatedBalanceIsPositive) {
-			setPlayer(Object.assign({}, player, {car: car, bankBalance: updatedBankBalance }));
-		
+		if (updatedBalanceIsPositive && !carExistsInGarage) {
+			setPlayer(Object.assign({}, player, { car: car, bankBalance: updatedBankBalance }));
+
+		}
+		else if (carExistsInGarage) {
+
+			setBoldText(' bold');
 		}
 	}
 }

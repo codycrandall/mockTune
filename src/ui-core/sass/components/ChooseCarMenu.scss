@@ -1,5 +1,8 @@
 .choose-car-menu {
-    color: green;
+    max-height: 100%;
+    background: #1C1C1C;
+    text-align: center;
+    
     .car {
         display: flex;
         flex-direction: column;
@@ -10,5 +13,17 @@
         .model-info {
             padding: 15px 0;
         }
+    }
+
+    .car-list {
+        margin: 25px 0;
+    }
+    
+    .bank-balance  {
+        margin-top: 25px;
+    }
+
+    .close {
+        border: 1px solid green;
     }
 }

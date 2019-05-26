@@ -46,6 +46,7 @@ export default function RaceMenu(props) {
 
 	return (
 		<div className={'race-menu'}>
+			<div className={'main-menu'}>Main Menu</div>
 			<div className={'start-line'}>
 				<div className={'start-race'} onClick={handleStartRace}>
 					Start Race

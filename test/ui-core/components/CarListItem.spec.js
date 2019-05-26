@@ -11,7 +11,8 @@ describe('CarListItem', () => {
 			car: chance.car({ price: 100 }),
 			player: {
 				name: chance.name(),
-				bankBalance: 100
+				bankBalance: 100,
+				car: chance.car()
 			}
 		};
 		expectedCar = props.car;
@@ -21,7 +22,7 @@ describe('CarListItem', () => {
 		const car = render();
 		expect(carPropsAtIndex(car, 0)).eql(
 			`${expectedCar.year} ${expectedCar.make} ${expectedCar.model} ${
-				expectedCar.trim
+			expectedCar.trim
 			}`
 		);
 		expect(carPropsAtIndex(car, 1)).eql(
@@ -47,7 +48,7 @@ describe('CarListItem', () => {
 				car: overrides.car,
 				bankBalance: props.player.bankBalance - overrides.car.price,
 				name: props.player.name
-			});			
+			});
 		});
 	});
 
@@ -61,7 +62,7 @@ describe('CarListItem', () => {
 				name: props.player.name,
 				car: props.car,
 				bankBalance: props.player.bankBalance - props.car.price
-			});			
+			});
 		});
 	});
 
@@ -86,6 +87,79 @@ describe('CarListItem', () => {
 			const car = render(overrides).find('.car.disabled');
 			expect(car).lengthOf(1);
 		});
+	});
+
+	describe('car has been purchased', () => {
+		it('should prevent the user from purchasing the same car twice', () => {
+			const overrides = {
+				player: {
+					bankBalance: 1000,
+					car: props.car
+				}
+			};
+
+			const car = render(overrides);
+			car.find('.car').simulate('click');
+
+			expect(car.prop('player').bankBalance).eql(1000);
+
+			expect(car.find('.car.disabled')).lengthOf(1);
+		});
+
+		it('should allow the user to buy two separate cars', () => {
+			const overrides = {
+				player: {
+					bankBalance: 1000,
+					car: chance.car({ make: 'blah' })
+				}
+			};
+			const car = render(overrides);
+
+			car.find('.car').simulate('click');
+			expect(car.find('.car.disabled')).lengthOf(0);
+		});
+
+		it('should display the text "already purchased"', () => {
+			const overrides = {
+				player: {
+					bankBalance: 1000,
+					car: props.car
+				}
+			};
+			const car = render(overrides);
+
+			expect(car.find('.purchased').text()).eql('already purchased');
+		});
+
+		it('should display the text "already purchased" in bold if clicked', () => {
+			const overrides = {
+				player: {
+					bankBalance: 1000,
+					car: props.car
+				}
+			};
+			const car = render(overrides);
+
+			car.simulate('click');
+
+			expect(car.find('.purchased.bold').text()).eql('already purchased');
+		});
+	})
+
+	it('should show the text "cant afford" if the bank balance is less than the car price', () => {
+		const overrides = {
+			player: {
+				bankBalance: 100
+			},
+			car: chance.car({ price: 101 })
+		};
+		const car = render(overrides);
+
+		expect(car.find('.too-expensive').text()).eql('can\'t afford this car');
+	});
+
+	it('should not show the text "cant afford" if the bank balance is greater than the car price', () => {
+		expect(render().find('.too-expensive')).lengthOf(0);
 	});
 
 	const carPropsAtIndex = (car, index) => {

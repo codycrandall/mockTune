@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import '../../sass/components/start-new-game/CreateCharacterMenu.scss';
-import MenuCollapsed from './MenuCollapsed';
+import '../../sass/components/start-new-game/ChangeNameMenu.scss';
 import MenuExpanded from './MenuExpanded';
 
-export default function CreateCharacterMenu(props) {
+export default function ChangeNameMenu(props) {
 	const [isMenuExpanded, setMenuExpanded] = useState(false);
 
-	CreateCharacterMenu.propTypes = {
+	ChangeNameMenu.propTypes = {
 		setPlayer: PropTypes.func,
 		player: PropTypes.object
 	};
 
 	return (
 		<div
-			className={'start-new-game'}
+			className={'change-player-name'}
 			onClick={() => setMenuExpanded(!isMenuExpanded)}
 		>
-			{!isMenuExpanded && <MenuCollapsed />}
+			{!isMenuExpanded && 'Set Player Name'}
 			{isMenuExpanded && (
-				<MenuExpanded setPlayer={props.setPlayer} player={props.player}/>
+				<MenuExpanded setPlayer={props.setPlayer} player={props.player} />
 			)}
 		</div>
 	);

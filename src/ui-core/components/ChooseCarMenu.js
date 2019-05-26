@@ -9,8 +9,8 @@ export default function ChooseCarMenu(props) {
 		setPlayer: PropTypes.func,
 		player: PropTypes.object
 	};
-	const { player, setPlayer } = props;
-	
+	const { player, setPlayer, setShowGarage } = props;
+
 	return (
 		<div className={'choose-car-menu'}>
 			<div className={'bank-balance'}>
@@ -18,9 +18,10 @@ export default function ChooseCarMenu(props) {
 			</div>
 			<div className={'car-list'}>
 				{cars.map((car, key) => (
-					<CarListItem car={car} key={key} setPlayer={setPlayer} player={player}/>
+					<CarListItem car={car} key={key} setPlayer={setPlayer} player={player} />
 				))}
 			</div>
+			<div className={'close'} onClick={() => setShowGarage(false)}>Close</div>
 		</div>
 	);
 }

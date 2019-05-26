@@ -10,10 +10,12 @@ describe('<ChooseCarMenu/>', () => {
 	beforeEach(() => {
 		props = {
 			player: {
-				bankBalance: chance.natural({ max: 100000 })
-			}
+				bankBalance: chance.natural({ max: 100000 }),
+				car: chance.car()
+			},
+			setShowGarage: sinon.stub()
 		};
-		chooseCarMenu = mount(<ChooseCarMenu {...props}/>);
+		chooseCarMenu = mount(<ChooseCarMenu {...props} />);
 	});
 
 	after(() => {
@@ -30,4 +32,14 @@ describe('<ChooseCarMenu/>', () => {
 
 		expect(bankBalance.text()).eql(`Current Bank Balance: $${props.player.bankBalance}`);
 	});
+
+	it('should include a close button', () => {
+		expect(chooseCarMenu.find('.close').text()).eql('Close')
+	});
+
+	it('should call setShowGarage to false when close button is called', () => {
+		chooseCarMenu.find('.close').simulate('click');
+		expect(props.setShowGarage).calledOnce;
+		expect(props.setShowGarage).calledWith(false);
+	})
 });

@@ -1,14 +1,35 @@
 {
-  "presets": [["@babel/preset-env", { "modules": false }], "@babel/react"],
-  "plugins": ["react-hot-loader/babel", "@babel/plugin-proposal-object-rest-spread", ["module-resolver", {
-    "root": ["."],
-    "alias": {
-      "Components": "./src/ui-core/components"
-    }
-  }]],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ],
+    "@babel/react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "module-resolver",
+      {
+        "root": [
+          "."
+        ],
+        "alias": {
+          "Components": "./src/ui-core/components",
+          "Src": "./src"
+        }
+      }
+    ]
+  ],
   "env": {
     "test": {
-      "presets": ["@babel/preset-env", "@babel/react", ]
+      "presets": [
+        "@babel/preset-env",
+        "@babel/react",
+      ]
     }
   }
 }

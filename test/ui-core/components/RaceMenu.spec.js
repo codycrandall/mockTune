@@ -49,10 +49,8 @@ describe('RaceMenu', () => {
 		expect(raceMenu.find('.finish-line').text()).eql('Finish');
 	});
 
-	it('should render the start line , then the winner text, then the finish line', () => {
-		expect(getClassNameForChild(raceMenu, 0)).eql('start-line');
-		expect(getClassNameForChild(raceMenu, 1)).eql('winner-text');
-		expect(getClassNameForChild(raceMenu, 2)).eql('finish-line');
+	it('should include a finish line', () => {
+		expect(raceMenu.find('.start-line')).lengthOf(1);
 	});
 
 	it('should trigger the start to the race', () => {
@@ -61,6 +59,10 @@ describe('RaceMenu', () => {
 		startRace.simulate('click');
 
 		expectRaceStarted(true);
+	});
+
+	it('should include a main menu button', () => {
+		expect(raceMenu.find('.main-menu').text()).eql('Main Menu');
 	});
 
 	function getClassNameForChild(menu, childIndex) {

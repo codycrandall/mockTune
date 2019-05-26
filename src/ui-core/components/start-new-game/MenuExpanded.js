@@ -18,14 +18,14 @@ export default function MenuExpanded(props) {
 		event.stopPropagation();
 
 		if (inputValue && inputValue.trim(' ') !== '') {
-			props.setPlayer(Object.assign({}, props.player, {name: inputValue}));
+			props.setPlayer(Object.assign({}, props.player, { name: inputValue }));
 		}
 	}
-
+	
 	return (
 		<div>
 			<TextInput
-				placeholder={'Player Name'}
+				placeholder={props.player.name || 'Player Name'}
 				inputValue={inputValue}
 				setInputValue={setInputValue}
 			/>
@@ -39,7 +39,7 @@ export default function MenuExpanded(props) {
 					handleClick(event);
 				}}
 			>
-				GO
+				Set Name
 			</button>
 		</div>
 	);
