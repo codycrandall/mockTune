@@ -3,6 +3,15 @@
 	margin-bottom: 50px;
 }
 
+.main-menu {
+	text-align: center;
+}
+
+.go-to-race-menu {
+	display:flex;
+	flex-direction: column;
+}
+
 .main-menu-buttons {
 	margin-top: 25px;
 	> div {

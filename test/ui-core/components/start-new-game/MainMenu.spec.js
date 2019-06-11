@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import MainMenu from 'Components/start-new-game/MainMenu';
 import ChangeNameMenu from 'Components/start-new-game/ChangeNameMenu';
 import ChooseCarMenu from 'Components/ChooseCarMenu';
+import RaceMenu from '../../../../src/ui-core/components/RaceMenu';
 
 describe('<MainMenu />', () => {
 	let mainMenu, props;
@@ -83,23 +84,30 @@ describe('<MainMenu />', () => {
 
 	describe('race menu button', () => {
 		it('should include a button that links to the start race menu', () => {
-			expect(mainMenu.find('.go-to-race-menu').text()).eql('Go To Race Menu')
+			const raceMenu = mainMenu.find('.go-to-race-menu');
+			expect(raceMenu.text()).eql('Go To Race Menu')
+			raceMenu.simulate('click');
+			expect(mainMenu.find(RaceMenu)).lengthOf(1);
 		});
 
 		it('should be disabled when the player has not selected a car', () => {
 			const overrides = { player: {} };
 
 			const mainMenu = render(overrides);
-
-			expect(mainMenu.find('.go-to-race-menu').prop('disabled')).eql(true);
+			const raceButton = mainMenu.find('.go-to-race-menu');
+			expect(raceButton.prop('disabled')).eql(true);
+			expect(raceButton.text()).eql('Go To Race Menu\n(Requires a vehicle from the garage)');
 		});
 
 		it('should not be disabled when the player has selected a car', () => {
 			const overrides = { player: { car: chance.string() } };
 
 			mainMenu = render(overrides);
+			const raceButton = mainMenu.find('.go-to-race-menu');
 
-			expect(mainMenu.find('.go-to-race-menu').prop('disabled')).eql(false);
+			expect(raceButton.prop('disabled')).eql(false);
+			expect(raceButton.text()).eql('Go To Race Menu');
+
 		});
 	});
 

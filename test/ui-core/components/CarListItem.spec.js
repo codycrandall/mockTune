@@ -146,12 +146,24 @@ describe('CarListItem', () => {
 		});
 	})
 
-	it('should show the text "cant afford" if the bank balance is less than the car price', () => {
+	it('should show the text "cant afford" if the bank balance is less than the car price and the car has not been purchased', () => {
 		const overrides = {
 			player: {
 				bankBalance: 100
 			},
 			car: chance.car({ price: 101 })
+		};
+		const car = render(overrides);
+
+		expect(car.find('.too-expensive')).lengthOf(1);
+	});
+
+	it('should not show the text "cant afford" if the car HAS been purchased', () => {
+		const overrides = {
+			player: {
+				bankBalance: 0
+			},
+			car: props.car
 		};
 		const car = render(overrides);
 

@@ -9,7 +9,7 @@ export default function ChooseCarMenu(props) {
 		setPlayer: PropTypes.func,
 		player: PropTypes.object
 	};
-	const { player, setPlayer, setShowGarage } = props;
+	const { player, setPlayer, setShowPopup } = props;
 
 	return (
 		<div className={'choose-car-menu'}>
@@ -21,7 +21,7 @@ export default function ChooseCarMenu(props) {
 					<CarListItem car={car} key={key} setPlayer={setPlayer} player={player} />
 				))}
 			</div>
-			<div className={'close'} onClick={() => setShowGarage(false)}>Close</div>
+			<div className={'close'} onClick={() => setShowPopup(false)}>Close</div>
 		</div>
 	);
 }

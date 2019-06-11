@@ -13,7 +13,7 @@ describe('<ChooseCarMenu/>', () => {
 				bankBalance: chance.natural({ max: 100000 }),
 				car: chance.car()
 			},
-			setShowGarage: sinon.stub()
+			setShowPopup: sinon.stub()
 		};
 		chooseCarMenu = mount(<ChooseCarMenu {...props} />);
 	});
@@ -37,9 +37,9 @@ describe('<ChooseCarMenu/>', () => {
 		expect(chooseCarMenu.find('.close').text()).eql('Close')
 	});
 
-	it('should call setShowGarage to false when close button is called', () => {
+	it('should call setShowPopup to false when close button is called', () => {
 		chooseCarMenu.find('.close').simulate('click');
-		expect(props.setShowGarage).calledOnce;
-		expect(props.setShowGarage).calledWith(false);
+		expect(props.setShowPopup).calledOnce;
+		expect(props.setShowPopup).calledWith(false);
 	})
 });

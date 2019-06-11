@@ -8,20 +8,24 @@ import VehicleInfo from '../VehicleInfo';
 
 export default function MainMenu(props) {
 	const { player, setPlayer } = props;
-	const [showGarage, setShowGarage] = useState(false);
-
+	const [showPopup, setShowPopup] = useState(false);
+	const carIsNeeded = player.car ? '' : '\n(Requires a vehicle from the garage)'
 	return (
 		<React.Fragment>
-			{showGarage && <ChooseCarMenu player={player} setPlayer={setPlayer} setShowGarage={setShowGarage} />}
-			{!showGarage && <div className={'main-menu'}>
+			{showPopup === 'choose-car' && <ChooseCarMenu player={player} setPlayer={setPlayer} setShowPopup={setShowPopup} />}
+			{showPopup === 'race-menu' && <RaceMenu player={player} setPlayer={setPlayer} setShowPopup={setShowPopup} />}
+			{!showPopup && <div className={'main-menu'}>
 				<div className={'main-menu-text'}>MAIN MENU</div>
 				<div className={'bank-balance'}>Bank Balance: ${player.bankBalance}</div>
 				<div className={'player-name'}>Player Name: {player.name}</div>
 				{player.car && <div className={'player-garage'}>Player's Garage: <VehicleInfo car={player.car} /></div>}
 				<div className={'main-menu-buttons'}>
 					<ChangeNameMenu player={player} setPlayer={setPlayer} />
-					<div className={'link-to-car-menu'} onClick={() => setShowGarage(true)}>Open Garage</div>
-					<div className={'go-to-race-menu'} disabled={!player.car} >Go To Race Menu</div>
+					<div className={'link-to-car-menu'} onClick={() => setShowPopup('choose-car')}>Open Garage</div>
+					<div className={'go-to-race-menu'} disabled={!player.car} onClick={() => setShowPopup('race-menu')}>
+						<div>Go To Race Menu</div>
+						<div>{carIsNeeded}</div>
+					</div>
 				</div>
 			</div>}
 		</React.Fragment >

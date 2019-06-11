@@ -39,8 +39,8 @@ export default function CarListItem(props) {
 			<div>curb weight: {car['curb-weight']}</div>
 			<div>cost: {car.price}</div>
 			{carExistsInGarage && <div className={`purchased${boldText}`}>already purchased</div>}
-			{!updatedBalanceIsPositive && <div className={'too-expensive'}>can't afford this car</div>}
-		</span>
+			{!updatedBalanceIsPositive && !carExistsInGarage && < div className={'too-expensive'}>can't afford this car</div>}
+		</span >
 	);
 	function handleClick() {
 		if (updatedBalanceIsPositive && !carExistsInGarage) {
