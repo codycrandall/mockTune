@@ -1,24 +1,25 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import App from 'Src/App';
-import MainMenu from 'Src/ui-core/components/start-new-game/MainMenu';
+import { BrowserRouter as MemoryRouter, Switch } from 'react-router-dom';
 
+import App from 'Src/App';
+import Router from 'Components/Router';
 describe('<App/>', () => {
 	let wrapper;
 
 	beforeEach(() => {
-		wrapper = mount(<App />);
+		wrapper = mount(<MemoryRouter><App /></MemoryRouter>);
 	});
 
 	after(() => {
 		wrapper.unmount();
 	});
 
-	it('should render a menu and pass the player hook', () => {
-		const mainMenu = wrapper.find(MainMenu);
-		expect(mainMenu).lengthOf(1);
-		expect(mainMenu.prop('player')).to.be.a('Object');
-		expect(mainMenu.prop('setPlayer')).to.be.a('Function');
+	it('should render a Router and pass the player hook', () => {
+		const router = wrapper.find(Router);
+		expect(router).lengthOf(1);
+		expect(router.prop('player')).to.be.a('Object');
+		expect(router.prop('setPlayer')).to.be.a('Function');
 	});
 });

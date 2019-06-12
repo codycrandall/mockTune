@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 
 import './ui-core/sass/App.scss';
 import './ui-core/sass/style-baseline.scss';
-import MainMenu from './ui-core/components/start-new-game/MainMenu';
+import Router from './ui-core/components/Router';
 
 export default function App() {
     const [player, setPlayer] = useState({ bankBalance: 2000 });
@@ -11,7 +10,7 @@ export default function App() {
     return (
         <React.StrictMode>
             <div className={'wrapper'}>
-                <MainMenu player={player} setPlayer={setPlayer} />
+                <Router player={player} setPlayer={setPlayer} />
             </div>
         </React.StrictMode>
     );

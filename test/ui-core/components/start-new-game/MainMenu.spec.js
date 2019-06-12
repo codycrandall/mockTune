@@ -100,7 +100,7 @@ describe('<MainMenu />', () => {
 		});
 
 		it('should not be disabled when the player has selected a car', () => {
-			const overrides = { player: { car: chance.string() } };
+			const overrides = { player: { car: chance.car() } };
 
 			mainMenu = render(overrides);
 			const raceButton = mainMenu.find('.go-to-race-menu');

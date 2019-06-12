@@ -38,6 +38,10 @@ module.exports = {
 		]
 	},
 	resolve: {
+
+		alias: {
+			'react-dom': '@hot-loader/react-dom'
+		},
 		extensions: ['.jsx', '.js']
 	},
 	plugins: [HtmlWebpackPluginConfig]
