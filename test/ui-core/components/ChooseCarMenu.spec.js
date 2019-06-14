@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 
 import ChooseCarMenu from 'Components/ChooseCarMenu';
 import Cars from '../../../src/ui-core/constants/cars';
@@ -15,7 +16,7 @@ describe('<ChooseCarMenu/>', () => {
 			},
 			setShowPopup: sinon.stub()
 		};
-		chooseCarMenu = mount(<ChooseCarMenu {...props} />);
+		chooseCarMenu = mount(<MemoryRouter><ChooseCarMenu {...props} /></MemoryRouter>);
 	});
 
 	after(() => {
@@ -34,12 +35,7 @@ describe('<ChooseCarMenu/>', () => {
 	});
 
 	it('should include a close button', () => {
-		expect(chooseCarMenu.find('.close').text()).eql('Close')
+		expect(chooseCarMenu.find('a.close').text()).eql('Close')
+		expect(chooseCarMenu.find('a.close').prop('href')).eql('/')
 	});
-
-	it('should call setShowPopup to false when close button is called', () => {
-		chooseCarMenu.find('.close').simulate('click');
-		expect(props.setShowPopup).calledOnce;
-		expect(props.setShowPopup).calledWith(false);
-	})
 });

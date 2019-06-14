@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { BrowserRouter as MemoryRouter, Switch } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import App from 'Src/App';
 import Router from 'Components/Router';

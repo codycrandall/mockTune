@@ -1,0 +1,14 @@
+.styled-button {
+    		background-color: transparent;
+		color: green;
+		border: 1px solid green;
+		padding: 10px;
+        
+        &:active {
+            outline-color: #84FF00;	
+        }
+		&:hover,
+		&:focus {
+			background: lighten(#1C1C1C, 5%);
+		}
+}

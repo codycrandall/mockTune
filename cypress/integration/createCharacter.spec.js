@@ -6,13 +6,13 @@ describe('CreateCharacter', () => {
 	});
 
 	it('should toggle the start new game menu', () => {
-		const menuExpanded = '.chevron-up';
+		const ChangeName = '.chevron-up';
 		const mainMenu = '.chevron-down';
 
 		cy.get(mainMenu).click();
 		cy.get('button').contains('GO').should('exist');
 
-		cy.get(menuExpanded).click();
+		cy.get(ChangeName).click();
 		cy.contains('Start New Game');
 	});
 
