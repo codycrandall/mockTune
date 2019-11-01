@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Link, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 
 import ChangeName from 'Components/ChangeName';
@@ -8,13 +8,13 @@ import TextInput from 'Components/TextInput';
 import { enterText } from '../../utilities/test-utilities';
 
 
-describe('<changeName />', () => {
+describe('<ChangeName />', () => {
 	let changeName, setName, textInput, props;
 
 	beforeEach(() => {
 		changeName = render();
 		textInput = changeName.find(TextInput);
-		setName = changeName.find('.change-name-menu').childAt(1);
+		setName = changeName.find('.change-name-menu').childAt(1).find('StyledButton');
 	});
 
 	after(() => {

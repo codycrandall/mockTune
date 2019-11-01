@@ -34,7 +34,7 @@ export default function ChangeName(props) {
 				setInputValue={setInputValue}
 			/>
 			{renderCloseLink(
-				<StyledButton onClick={setName()}>Save</StyledButton>
+				<StyledButton onClick={setName}>Save</StyledButton>
 			)}
 			<StyledButton>{renderCloseLink('Close without saving')}</StyledButton>
 		</div >
